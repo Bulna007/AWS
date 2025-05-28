@@ -1,0 +1,127 @@
+aws cloudplatform architecture
+1. aws regions
+A region is nothing but an geographical location or a place from where aws is operating and offering the cloud services to the world.  A region is not a country there can be multiple regions within an country, so we can think of a region as a place within a country from where it is operating and providing services.
+	
+For eg.. in united states there are #4 regions are there
+1. us-east-1
+2. us-east-2 
+3. us-west-1
+4. us-west-2
+	
+There are 2 factors based on which we choose a region to use services:
+1. nearest geographical location closest to the users of the business, so that the latency in accessing the services will be low.
+2. government complainces and restrictions	
+3. pricing and taxation
+
+	
+2. availability zone
+An availability zone is an group of datacenters setup at a region to offer the services. AWS Cloudplatform ensures atleast #2 availability zones are setup in each region, so that endusers can distribute their services across these AZs for high-availability.
+	
+3. Edge locations
+Edge locations are mini-datacenters setup around the aws region to offer global services with low latency
+1. IAM 
+2. CloudFront
+3. Route53
+etc
+--------------------------------------------------------------------------------------------------------------------------------------------
+scope of services
+There are around 200+ services are offered by the aws cloudplatform, these services are categorized into 3 different groups/scopes based on their availability and accessibility
+
+The scope of services indicates, where the resource/service is created/bounded to which scope on the aws cloudplatform, so that the cloud engineers can provision and manage them. There are 3 scopes of services are there
+
+1. Global scope
+2. Region scope
+3. Availability Zone scope
+
+1. Global scope
+The service/resource categorized to the global scope are created and accessible across the regions of the cloudplatform. A change in these services would be effected across all the regions of the cloud account.  Let us understand by looking at few of the global services
+
+1.1 Route53 (DNS Service)
+Amazon Route53 is an DNS Service. If we publish an DNS entry into the Route53 service, this DNS entry should be propagated across all the regions of the aws cloudplatform
+
+1.2 IAM registry (authentication/authorization)
+For accessing the aws cloudplatform we need an aws account. The	aws account we setup is scoped global scope. This means an aws account user can access the cloudplatform services of all the regions. If there is a change in the aws account like adding an new IAM user or changing permissions for a user should reflect across all the regions on the platform
+
+1.3 AWS Cloud Front (CDN Service)
+AWS Cloudfront is an CDN Service (Content Delivery Network) into which we can publish static resources/content like css, js, images, icons, fonts, html, audio, video etc and these resources are replicated across all the regions of the cloudplatform. So that the static resource can be served to the customers closest to the region from where there are accessing
+
+Any changes to the static resources that are published into the cloud front would be reflected across all the regions globally.
+	
+#2. Region scope
+These are the services that are created at the aws region scope and are accessible and available within the region only.
+	
+2.1 DynamoDB
+It is an no-sql database service offered by the aws cloudplatform. It is an region scoped service and is created within the region we provisioned. So if we create an dynamodb table in an aws region, the table and its data will be replicated across all the AZs of the region.
+	
+2.2 S3 Bucket
+S3 is an object storage service in which we store objects like
+1. File
+2. Images
+3. Videos
+4. Audio
+etc
+The objects we store in S3 storage bucket are accessible across all the AZs of the region.
+	
+2.3 Elastic Loadbalancer
+Loadbalancer is an region scope service, so that it can distribute the traffic between the resources that are distributed across the AZs of the region
+
+Few more examples of region-scope services are
+2.4 Virtual private cloud network (vpc)
+2.5 Relational Data Service (RDS)
+	
+#3. Availability Zone scope
+These services are scoped / created at Availability Zone scope and are visible and managed at the AZ level. 
+	
+3.1 EC2 Instance
+An EC2 Instance is provisioned and hosted within an Availability Zone only
+
+3.2 Elastic block storage
+EBS is an harddisk attached to the ec2 instance, as ec2 is an AZ scope service, the ebs storage is also scoped at AZ only
+
+3.3 Subnet
+Subnets are created at AZ level 
+-------------------------------------------------------------------------------------------------------------------------------------------
+1. provision an ec2 instance on the aws cloudplatform
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

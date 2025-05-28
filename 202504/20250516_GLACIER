@@ -1,0 +1,191 @@
+Glacier
+-------
+AWS Glacier is an archival storage service provided by AWS Cloudplatform. it is 10x cheaper in storing the data when compared with S3 storage.
+Business organizations has data of different nature like
+1. relational data
+2. semi-structured data
+3. object-storage data
+
+and these data has different access requirements . some data might be frequently accessed through enduser operations which is called "Transactional data" or "operational data", such data is being 
+1. accessed
+2. modified
+3. processed
+actively through the software application
+
+so this data being stored in databases like
+1. rds service
+2. dynamodb
+3. S3
+
+but there are other types of data that is not being actively used. For eg.. in banking and financial organizations or healthcare industry, they store the transactional data of the account holders or prescription info about patients in the database systems.
+    
+This data is generated through enduser operations and should be kept accessible to the customer/enduser for certain amount of time like 6 months to 12 months, there after this data is not being actively used, but we cannot purge/delete this data because of complaince or regulations being enforced by the government authorities
+
+such inactive data being kept in active databases like rds or dynamo or s3 not only incurrs huge cost of storage, it demands more computing capacity like cpu/memory in processing such data. So instead of storing the data in such databases, we can store them in much cheaper storage devices like Glacier service
+
+Features:
+1. Cheapest storage
+2. durability
+3. secured
+4. infinite storage capacity
+5. region specific cost
+
+How to store the data in Glacier?
+Glacier uses magnetic storage devices like tapes for storing the data, so that it can lower the cost of storage. It stores the data interms of objects similar to S3 storage like
+1. audios
+2. videos
+3. files
+4. images
+5. documents
+etc
+upon storing each object glacier generates an unique id, using which we can retrieve the data. In glacier we need to create Vaults, Vaults are similar to buckets in S3, we group related files, documents together and store inside the Vault.
+    
+Vaults are used for:
+1. grouping related objects and storing together
+2. we can apply access restrictions on Vaults by binding policies around them
+
+The Galcier supports
+1. storing the data instantaneously (realtimeter data)
+2. but while retrieving the data, it will not works in realtime. We need to place a request to the glacier asking for reading the data, so that glacier can make the data available for usage after sometime
+
+The storage cost will vary based on the region where we are storing and the minimum cost of storage starts at: 0.0036 per GB/month. All the data storage or uploads into the Glacier Vault free
+
+Data Retrieval
+For each data retrieval from Glacier Vault, amazon charges us. 
+To support retrieval of data from Glacier, it supports #3 retrieval modes:
+1. expedited
+2. standard
+3. bulk
+
+Storage class or tier	               Expedited	   Standard (with Batch Operations)	Standard (without Batch Operations)	 Bulk
+S3 Glacier Flexible Retrieval or 
+S3 Intelligent-Tiering Archive Access  1–5 minutes      Minutes–5 hours                  3–5 hours                           5–12 hours
+S3 Glacier Deep Archive or  
+S3 Intelligent-Tiering Deep Archive    n/a              9-12 hours                       Within 12 hours           Within 48 hours
+Access 
+
+
+We can use fast-glacier tool for storing and accessing the data from aws glacier service
+-----------------------------------------------------------------------------------------------------------------------------------
+6. Snowball
+The existing enterprise organization hosted their applications on the data centers over the years of time. These applications has generated petabytes of data during their existence.
+    
+If these customers has to move from data centers to aws cloudplatform they not only need to move their applications from the data center to the cloud. Along with that the petabytes of data that is stored on the data center servers should be moved to the aws cloudplatform respective services
+
+How to move these petabytes of data from data centers to aws cloudplatform services?
+There is no proper solution that works in moving huge data from datacenter to the cloud. That limits the enterprises in moving towards the aws cloudplatform. So to help and support moving the data to cloud aws introduced snowball
+
+Snowball is an physical hardware device, that aws team carries to the datacenter and they themself copies the data from the data centers and move into respective services of the aws cloudplatform. thus all the data gets migrated easily
+
+Snowball Family
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

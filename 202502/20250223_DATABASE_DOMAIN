@@ -1,0 +1,127 @@
+Database domain
+----------------
+The database related services are part of the database domain. There are 5 services are there Relational database service, aspart of it 	
+
+1. RDS Service (Relational database service), is an PaaS service, the aws cloudplatform supports provisioning various different databases aspart of the RDS Service like oracle, mysql & postgres sql etc
+
+2. AuroraDb	
+AuroraDb is an RDS Service that is built ontop of Mysql Server/Postgres database, it performs 5x faster interms of performance and data transfer when compared with mysql server database 
+
+3. DynamoDb
+It is an no-sql database that is built by the aws cloudplatform and provided it as service on aws cloudplatform. We can store petabytes of data in DynamoDb and it is higly scalable
+
+4. Elastic Cache
+It is an distributed cache service that supports provision various vendor Cache platforms as services on aws cloudplatform like MemCache, RedisCache that is used as server-side caching in applications
+
+5. Redshift (no practicle)
+Database warehouse service used for processing and analyzing the data and generate reports
+-------------------------------------------------------------------------------------------------------------------------------------
+Database management system
+Database management system is an pre-built software that contains programming logic for storing and managing the data on the underlying Filesystem of the computer. The application developers dont have to write complex programming logic in building their applications to store/retrieve the data from the Filesystem of the computer, rather they only need write the code for talking to the database in passing the data or fetching the data
+
+There are lot of advantages of database management system software:
+1. Many or most of database management systems are distributed systems, which means these are accessible over the network. So we can run database software on one machine and software application on another machine. The software application can connect to the database software over the network in querying/persisting the data. Since each of them runs on their dedicated computers the throughput or performance of them would be very high
+
+2. Database server softwares provides tools/utilities through which we can monitor and periodically backup the data. So that incase of crash we can always can recover or restore the data
+
+3. database management systems are highly secure. They provide stringent authentication mechanisms through which a controlled access of data would be allowed
+
+4. The databases helps in enforcing the constraints or checks on the data that is being stored. so that bad or invalid data will not enters into the system
+
+5. The database management systems supports clustering, which has lot of advantages:
+	1. scaled storage
+	2. high-performance in processing the data
+	3. high-availability 
+-------------------------------------------------------------------------------------------------------------------------------------	
+There are different types of database management systems are there out of which 3 of them are currently under use:
+1. RDBMS/Sql databases
+2. No-Sql
+3. Object storage
+
+1. Relational database management system (RDBMS)
+Not all the data that flows into the business is being used for performing operations, only few/specific fields of data is being used aspart of the business to perform operations. So identify such fields of data that seems to be more meaningful and will be used for performing operations and store them aspart of the database management system.
+	
+The RDBMS database allows us to store the data in-terms	of tables. For each type of data we want to store we need to create one table in the RDBMS Database. For eg..
+	1. customer data will be stored in customer table
+	2. product data is stored in product table
+	3. sales information will be stored in sales table
+	
+Each table is defined with structured data definition means defined with fixed-set of columns indicating the fields of data we want to store aspart of it. Each column is defined with column_name, dataType and length of the data to be stored aspart of it. The RDBMS databases allows us to store the data in-terms of records or rows into these tables
+
+For e.g.. we can create a customer table with fixed fields/columns as below
+customer_nm  , varchar(20)
+age          , int
+gender       , varchar(6)
+mobile_nbr   , varchar(13)
+email_address, varchar(50)
+
+customer (table)
+columns:
+customer_nm   age   gender   mobile_nbr    email_address
+Peter         23    Male     +91928378374  peter@yahoo.com
+Jason         25    Male     +91929327374  jason@gmail.com
+-------------------------------------------------------------------------------------------------------------------------------------
+No-sql or semi-structured databases
+Relational database management systems are being manufactured or designed keep under assumption that every data has the same face of information. That means all the records of data that is persisted in a table carries all the fields of values.
+	
+For example if we create a table to hold the information about person, we assume all the people has same attributes of information that can be stored in the same table
+
+But in-reality not all the data is structured, even thought the information we are persisting is of same entity type, it might still carry different fields or attributes of data.
+	
+For eg.. if we are creating a table to hold information about mobile phones that are sold by a mobile store, to accomodate storing various different types of mobiles of differing features we need to create one single large table that contains 100s of columns in it.
+	
+But in reality we endup instoring most of the records with many columns persisted as NULL values as that attributes may not be applicable for that mobile Type, thus resulting in huge amount of wastage of memory.
+	
+Un-fortunately for a decades of time, there is no alternate apart from persisting the data in RDBMS database even the data is not structured. 
+	
+to overcome such challenges in persisting the semi-structure the no-sql or semi-structured database management systems are introduced.
+	
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,307 @@
+1. Networking
+
+The Networking domain offers networking related services or resources like
+1. routers
+2. firewalls
+3. gateways
+4. vpn
+etc
+which are required for inter-connecting the resources and enforcing traffic restrictions in securing the access to these resources.
+	
+The AWS Cloudplatform offers 10+ different services aspart of the network domain:
+1. VPC
+2. Subnet
+3. Internet Gateway
+4. Nat Gateway
+5. Security groups
+6. Nacl rules
+7. Route Tables
+8. Vpc peering
+9. Vpc Endpoint
+10. VPN Gateway
+etc
+-------------------------------------------------------------------------------------------------------------------------------------
+1. Virtual Private Cloud (VPC) Network 
+vpc is an isolated network of resources of an aws account user. All the resources within an vpc network are isolated from other resources of another vpc by default.
+
+Characteristics of an vpc network:
+1. A vpc is created per user account, per region and it spans across all the Avalability zones of the region. 
+2. per aws user account, per region we can create at max 5 vpc networks only (soft limit)
+3. by default all the resources within the vpc can communicate with each other even though there are spread across the AZs of the region.
+4. by default the resources in one vpc cannot communicate with the resources of another vpc even though those are
+	1. belonging to same aws user account
+	2. even those 2 resources belongs to same region
+	because the purpose of vpc is to isolate the group of resources from another group
+5. by default per each user account, the aws cloud platform creates across all the regions one default vpc
+
+In AWS Cloudplatform there are 2 types of limits are there
+1. soft limit = by default enforced by aws cloudplatform for each type of service/resource there are offering (if applicable) and can be extended upon request.
+2. hard limit = these are the limits that are enforced and cannot be extended or modified.
+	
+What is the purpose of a vpc?
+The vpcs are used for organizing and managing the resources within an organization. We can create vpcs at various different levels to isolate resources of one group from another. The most common usecases of using vpc are as below.
+	
+1. per business unit or department
+In an organization there can be multiple departments or business units can be there. Across the business units we want to deploy and host the applications
+How to ensure the application/resources of one department are kept isolated from other department?
+(or)
+How to enforce different security restrictions on different resources across each department?
+We can keep them in separate vpc per each business unit or department
+
+2. per project
+We can create vpcs per project and can isolate the resources of one project from another.
+	
+3. per environment
+There can be multiple environments like development, qa environment, uat env and prod env etc. We develop, deploy and deliver the software application across the stages or environments.
+How to keep the resources of one environment isolated from another environment?
+per each environment create one vpc so that only the resources within that vpc only can communicate with each other isolating from another.
+	
+How to create an vpc network on aws cloudplatform?
+To create an vpc network, we need to define an name for the network. The name acts as an identifier through which we can understand what this vpc network has been created for. for eg.. financevpc or hrvpc etc
+
+To ensure all the resources are part of the vpc network we need to define cidr range while creating the vpc. So that all the resource that are part of the vpc will be assigned with the ip address within the cidr range only.
+	
+1. vpc name = to identify the usage/purpose of the vpc
+2. cidr = 10.0.1.0/24, here 10.0.1 is network address 1 - 254 are host addresses assigned to the resources when they are connected to the network
+-------------------------------------------------------------------------------------------------------------------------------------
+2. subnet
+vpc is an large/big isolated network that spans across all the availability zones of the region in which it has been created. By default all the resources within the vpc can access each other but we might have different resources being used in running the application like
+1. software application running on ec2 instance
+2. database server
+3. s3 storage bucket
+4. loadbalancer
+etc
+
+if all these resources are placed under the vpc directly we cannot enforce different traffic restrictions allowing them to access on the network. for eg..
+	1. an software application that is running on ec2 instance only should have access to the database server and s3 storage bucket
+	2. both database server and s3 storage bucket should be on the private network only
+	3. the loadbalance should be on public network and should route the traffic towards the application running on ec2 instance
+	
+How can we have the resources being part of one network can be enforced with different traffic restrictions?
+By having them under vpc, we cannot control or apply different traffic restrictions that is where subnet has been introduced.
+	
+An vpc network can be broken down into smaller sub-networks through the help of subnet in the aws cloudplatform, so that for each subnet we can enforce different traffic restrictions in controlling the access to the resources of the subnet.
+	
+Characteristics:
+1. A subnet is created within the availability zone of a vpc region
+2. per vpc we can create 200 subnets
+3. it is recommended to create atleast #2 subnets across the availability zones of the vpc region so that we can distribute the resources across the subnets/availability zones for high-availability
+
+What is the purpose of Subnet?
+There are 2 reasons why we create a subnet
+1. to enforce traffic restrictions on different group of resources differently within an vpc network
+2. to distribute resources across the availability zones of the vpc region
+
+How to create a subnet?
+To create a subnet we need to specify the below things:
+1. We should specify CIDR notation indicating the range of ip address to be alloted to the resources that are provisioned within the subnet. Always the subnet CIDR should be within the subset of VPC CIDR
+
+For eg.. if the vpc cidr is : 10.1.0.0/16 means, the network address of the vpc is 10.1, so all the resources that falls under this vpc network will  have initial network address as "10.1.*.*"
+	
+So for the subnet of the vpc the network address must and should be "10.1.*.*"	so we can specify the subnet cidr, within range of 10.1.1.0/24 - 10.1.255.0/24
+	
+2. Name of the vpc in which this subnet should be created
+3. Subnet name
+4. Availability zone of the vpc region in which the subnet should be created
+
+There are 3 types of subnets are there in aws cloudplatform.
+1. private subnet
+2. public subnet
+3. hybrid subnet
+
+1. private subnet
+By default when we create an subnet within a vpc, it would be private subnet only. The resources within a private subnet will have access to only other resources of the same vpc only. Any other resources that are outside the vpc cannot access the private subnet resources.
+	
+2. public subnet
+public subnet is connected to the public network/internet, so all the resources that are provisioned under an public subnet are accesssible from the external network.
+	
+By default when we create an subnet under a vpc, it will be private subnet only. So inorder to make a subnet as public we need to perform below activities
+
+1. create vpc network
+vpcname: hrvpc
+cidr: 10.1.0.0/16
+	
+2. create subnets within the availability zones of the vpc
+2.1 subnet1
+subnet name: hrsn1
+cidr: 10.1.1.0/24
+vpc: hrvpc
+availability_zone: az 1
+	
+2.2 subnet2
+subnet name: hrsn2
+vpc: hrvpc
+vpc cidr: 10.1.2.0/24
+availability zone: az 2
+	
+3. create an internet gateway
+Internet gateway is an aws network device that is always plugged-in into public internet network. To make an subnet as public subnet we need to create Internet Gateway (IG) attach to the vpc network in which the subnet exits
+
+internet gateway: hrig
+By default when we attach internet gateway to the vpc, the subnets of the vpc will not become public subnets. Because there is no route rule defined to the vpc router asking him to route the traffic of public network through Internet gateway for that subnet.
+	
+4. Route Table (RT)	
+By default when we create an vpc network, the aws cloudplatform will create an default route table associated with all the subnets of the vpc. The default route table is populated with an default route rule allowing all the traffic within the vpc cidr resources.
+	
+cidr         target
+10.1.0.0/16  vpc
+
+Now we need to add an additional route rule routing the traffic from or to external resources through internet gateway. But if we add this rule to the default route table, since it is applied to all the subnets of the vpc, every subnet becomes public subnet. so to make a specific subnet only as public subnet we need to create a separate route table associated with that subnet of the vpc network.
+	
+like hrigwrt (hr internet gateway route table) and associate it with hrsn1. Then add the new routing rule to allow public network traffic through internet gateway.
+	
+Note: while creating the subnets, name them appropriately like ending with private, public etc to quickly identify the type of the subnet.
+-----------------------------------------------------------------------------------------------------------------------------------
+How to access a private subnet resources from external network?
+We cannot access an private subnet resource for eg.. an ec2 instance from an external network. For this:
+1. We need to have an public subnet under our vpc network.
+2. create an jumpbox or bastion host which is an temporary machine under public subnet of the vpc network
+3. copy the private key of the private subnet resources onto the jumpbox 
+4. ssh onto the jumpbox and from there ssh onto the private subnet resource
+once we are done in accessing the private subnet resource through jumpbox we need to deprovision it.
+	
+How to copy the ssh private key file onto the bastion/jumpbox machine?
+we can use scp (secure copy) command to copy any file from one machine to the another as below
+
+scp -i pathToIdentityFileofJumpbox localFileToCopy ubuntu@jumpboxip:/directoryLocation
+upon copying the private key file onto the jumpbox machine we need to change the permissions of the key file using
+chmod 600 ~/.ssh/keyFile
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

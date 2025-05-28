@@ -1,0 +1,156 @@
+AWS Architecture
+-----------------
+The AWS Cloud Platform Architecture refers to how the aws has spread across in oferring the cloud services to the people around the world.
+
+1. AWS Region
+-------------
+AWS Regions are the geographical locations where the AWS Cloud platform has been hosted and offered their services out of the location. A Region has nothing to do with an Country. Within an country they can be one or more AWS Regions can be there
+
+For eg.. In United States, there are #4 AWS Regions in which AWS Cloud platform has been hosted.
+1. US-EAST-1
+2. US-EAST-2
+3. US-WEST-1
+4. US-WEST-2
+
+In India, there are #2 AWS Regions in which AWS Cloud platform has been hosted
+1. ap-south-1 (mumbai)
+2. ap-south-2 (hyderabad)
+
+From the above we can think of a AWS region as a place from where AWS is operating and providing their cloud services.
+
+AWS has spread across 30+ regions at different geographical locations around the world. Upon logging into the AWS Management console, ontop right corner we need to choose the AWS Region under which we want to host or manage the services or resources.
+
+How do we choose a Region to be used for creating or hosting the cloud services/resource in the AWS Cloud platform?
+There are 3 factors that should be taken into account, while choosing an region to be used
+1. Target audience
+Based on the target audience/customers of the business we should choose the region closest to them in hosting the services/application. So that the latency in accessing the services/application will be low. Incase if we have choosen the AWS Region as a far way from the Target audience, the latency in accessing the services/applications will be high which results in spoiling the end-users experience of the business
+
+For eg.. if the target audience belongs to India, and if we choose the aws region as us-east-2 (ohio), then it takes lot of time for the traffic of customers to reach all the way down to the ohio and get the back the response
+
+2. Compliance
+Most of the Governments in different countries has compliance rules enforcing the business to have the PHI or financial data of their customers to be stored locally within their country itself. In such case we should choose the region based on the audience data we are capturing or storing
+
+3. Pricing
+Different AWS Regions has different pricing in offering the cloud services. These pricing varies based on the local government taxation policies/rules and demand of services at that location. 
+	
+
+2. Availability Zones (AZ)
+--------------------------
+Within an AWS Region, AWS has setup multiple availability zones. per each aws region there are minimum #2 availability zones are guaranteed to be exists for high availability.
+	
+note: AWS recommends us to distribute the services/resources across the Availability Zones for high availability.
+	
+An Availability Zone is nothing but group of data centers within an location setup by the aws cloud platform offering cloud services at that location. These AZ locations within the region are selected carefully by evaluating various different parameters like
+
+1. climatic conditions
+2. power availability
+3. tornados
+4. volcanos
+5. earth quakes
+etc
+
+so that likely-ness of having all the availability zones of region going down is very less. These Availability zones are inter-connected with dedicated high-speed leased internet lines to ensure there is no network latency across these availability zones of the region.
+	
+	
+3. Edge Locations
+Edge locations are the mini data centers co-located across the regions of the aws cloud platform. There are few global/shared services are there in aws cloud platform like
+1. cloud front
+2. Route53
+3. IAM Registry
+etc
+to reduce network latency in distributing/accessing such global services to the customers, the aws cloud platform has setup mini-data centers around ther regions from where they operate these shared/global services.
+	
+(or)
+The Edge locations are replicated mini-data centers across the regions in offering global services at low-latency.
+	
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

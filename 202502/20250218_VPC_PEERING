@@ -1,0 +1,142 @@
+vpc peering
+------------
+The purpose of vpc is to create an isolated network are resources, so that the resources within the vpc can only communicate with each other irrespective of the subnet in which those are within the vpc
+
+But the resources that are part of #2 different vpcs cannot communicate with each other. There are #2 ways we can make resources of one vpc to communicate with the resources of another vpc
+	
+#1. make the subnets as public subnets
+If we want to expose our resources of the vpc to other resources of another vpc, we can make the subnet of our vpc as public subnet so that the resources within the subnet becomes accessible to other vpc resources given if the other resources are also part of public subnet of their vpc. There are dis-advantages of this approach
+	1.1 by making the subnets of either-side of the vpcs as public, we are exposing all of the resources of those subnets to the public world.
+	1.2 All the communication that takes place between these public subnet resources across the vpcs goes through external/public network channel due to which
+		1.2.1 The latency in accessing the resources will be high
+		1.2.2 The data-transfer speeds will be less
+		1.2.3 The cost of data-transfer between these resources across the vpcs is high since there are using public network channel for communication
+		
+#2. vpc peering
+VPC Peering allows to connect 2 different vpc networks within the cloud provider, enabling instances/resources of one vpc to communicate with each other as if those are part of same network using private ip address of the cloud private network. This eliminates the need of going through public network to facilitate data transfer between 2 isolated networks of within the same cloud platform
+
+advantages:
+1. private communication: all the traffic between the peered vpc networks will be within the cloud provider private network itself does results in high transfer rates and enhanced security
+2. Instances/Resources of one vpc can access the resources of another vpc by using their private ip addresses itself which is a direct-connection 
+3. Cross-region connectivity: vpc peering allows us to peer #2 different vpc networks that are part of 2 different regions of the same cloud provider
+4. Multi-account support: a vpc of one aws account user can be peered with the vpc of another aws account user thus enabling cross-account vpc communication
+5. Resource sharing: Enables sharing resources like database servers, web servers etc across the vpc networks
+
+When to use vpc peering:
+1. Centralized Shared resources: Access central resources like database servers from multiple vpc networks
+2. Different parts of the complex application distributed across multiple vpcs can communicate with each other using vpc-peering
+
+Limitations/restrictions:
+1. The cidr ranges of #2 vpc networks should not overlap
+2. transitive routing is not supported vpc (a) - peering connection - vpc (b), vpc (b) - peering connection vpc (c), it doesnt mean vpc (a) can communicate with vpc (c). To have the traffic flow between vpc (a) and vpc (c) we need to have one more peering connection between them
+3. There can be at max only one active peering connection can exist between 2 vpcs. we cannot create one more peering connection when one is already active between those vpcs
+4. There is a quota limits on vpc peering:
+	4.1 active connections per vpc: 50 (soft limit: max 125)
+	4.2 pending peering connection requests: 25 per vpc
+	4.3 expiry time of a unaccepted peering connection request: 1 week
+5. edge routing is not supported
+6. The internet gateway or nat gateway devices of one vpc cannot be used by other vpc even though they have a peering connection
+7. we cannot use security groups associated with one vpc inside the other vpc 
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+
+			
+			
+			
+			
+			
+			
+			
+			

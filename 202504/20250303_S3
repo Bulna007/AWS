@@ -1,0 +1,217 @@
+Storage domain
+---------------
+1. Elastic block storage (ebs)
+2. Simple Storage Service (s3)
+3. Elastic Filesystem (efs)
+4. Cloud Front (cf)
+5. Glacier
+6. Storage Gateway
+7. Snowball
+
+2. Simple Storage Service (S3)
+S3 stands for simple storage service, it is an object storage database provided by the aws cloudplatform to help us in storing and managing objects of data inside it. The objects can be File/Documents, Videos, Audios, Images etc these can be stored and accessed quickly from S3 storage. For every object that is being stored in S3 storage, to help us in locating and access the object the S3 attaches an id to the object.
+    
+while storing the objects we can organize them by creating folders inside the bucket. But in practical there is no folders, these are logical names given to the files while creating/uploading them into bucket. S3 bucket supports flat storage structure only
+
+for eg.. we created a bucket quickeats
+quickeats (storage bucket)
+|-static
+  |-css
+    |-site.css
+  |-js
+    |-common.js
+    
+actually there is no folder inside the bucket with css and js these are the names prepended to the files while storing in the bucket as 
+static/css/site.css, static/js/common.js
+
+advantages:-
+There are lot of advantages of s3 storage service
+1. durable and redundant, means the objects in the s3 bucket are guaranteed to be available 99.9999% without any loss of data. S3 takes the responsiblity of replicating the objects across the AZ's automatically.
+2. Throughput optimized performance, depends on the requirements in accessing the data, S3 scales up serving the objects at a great speed without comprimising the performance
+3. Cheapest storage cost: 0.234 per gb, that makes it more favorable in storing and serving the un-structure data
+4. S3 service is provided for free upto 12 months of max storage capacity of 5GB in free-tier
+5. Introduced storage classes in S3 using which we can futher reduce the cost of storing the data based on usage
+6. Highly secured and can be restricted through either acls or bucket-level policies
+
+What are the storage classes supported by S3?
+There are 7 storage classes are available with s3 storage. The storage classes basicially differs on these parameters:
+1. Latency
+2. Throughput
+3. Durability
+4. Availability
+5. Cost
+
+1. S3 Standard
+S3 Standard offers high-durability, availability and performs interms of object storage. It can be used for frequently-access data and deliver with low-latency and high-throughput in accessing the objects
+
+2. S3 Intelligent-Tiering
+When we are not sure about how the data is being used or accessed from the storage bucket, then place the data in S3 intelligent-tiering. S3 automatically monitors the usage of the data based on that it moves the data across the storage classes to optimize the cost
+
+3. S3 Standard IA (In-frequent Access)
+S3 Standard IA is used for storing data that is not being frequently accessed. But we need durability, high-availability and low-latency while accessing. The price of storing the data per GB is very less when compared with S3 standard
+
+4. S3 one-zone IA
+If the data is less frequently accessed, then we can place the data in one AZ only which lowers the cost of storage upto 20% when compared with S3 Standard IA. Here durability is not guaranteed.
+    
+5. S3 Glacier Instant Retrieval
+Glacier is an archival storage service. Here the data is stored on magnetic tapes. It is used for storing long-lived data that is rarely accessed and low cost of storage. We can save upto 80% of the storage cost in storing the data
+
+6. S3 Glacier deep archieve
+durable across availability zones, lowest-cost storage option suitable for storing the data alternate to magnetic tapes. Retrieval of data takes 12 hours
+
+7. S3 outposts
+Instead of storing the data on cloud, we can store the data on on-premise data center of our organization using S3 outpost.
+----------------------------------------------------------------------------------------------------------------------------------
+How to enforce security on S3 storage bucket and their objects?
+There are 2 ways we can apply security in S3
+1. ACLs = Access Control List
+2. Policies = IAM policies that can be configured at bucket-level in enforing the security
+
+1. Access control list (acls)
+ACLs are one of the security mechanism available for enforcing the security on the buckets and objects of S3. ACLs are very old mechanism and is deprecated and not recommended by aws cloudplatform itself in enforcing the security on buckets and objects. Because it has limited permissions available to enforce security on buckets and objects.
+  
+1.1 We can basically grant access permissions on bucket or objects to
+  a. owner
+  b. others
+  
+1.2 There are only few permissions can be enforced on the bucket and objects
+for a bucket we can enforce:
+  a. read
+  b. write
+  3. list
+  
+for an object:
+  a. read
+  b. write
+  
+From the above we can easily understand ACLs is not powerful way of enforcing the security on the buckets and objects since there are very limited options are available.  
+So by default when we create an S3 bucket ACLs are disabled.  if we want to enforce restrictions through ACLs we need to enable them explicitly
+----------------------------------------------------------------------------------------------------------------------------------
+While creating S3 storage bucket the aws allows us to choose below options
+1. acls disabled (recommended): means use bucket policies for enforcing security on bucket and objects
+2. block all public access (by default checked)
+block all public access is by default checked, this means anonymous (un-authenticated) access to the bucket and objects are disabled.
+  
+3. if we un-check block all public access to the bucket and objects, then 4 checkboxes are enabled with unchecked status
+If we create the bucket with un-check all public access, then objects in the bucket are controlled based on the aws account user only.
+The objects that are uploaded into this bucket are accessible only to the aws account owner. To enable public access to any of these objects of this bucket we should grant permissions by configuring policies
+
+By unchecking the block all public access checkbox, 4 checkboxes are enabled
+1. #2 checkboxes are used for block or un-blocking the access through ACLs
+2. The other #2 checkboxes are used for blocking and unblocking access through policies
+
+since we disabled acls, the first #2 checkboxes are not applicable for our bucket.
+2.3 Block public access to buckets and objects granted through new public bucket or access point policies
+If we check the above checkbox, we will not be able to grant access to bucket and objects publicly through policies
+
+2.4 Block public and cross-account access to buckets and objects through any public bucket or access point policies
+we block public access also and cross-account users access as well in permitting access to the buckets and objects
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

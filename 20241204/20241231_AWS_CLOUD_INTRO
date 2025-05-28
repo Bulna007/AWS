@@ -1,0 +1,229 @@
+Introduction to AWS Cloud platform
+-----------------------------------
+#1.
+AWS Cloud platform offers various different resources/services to the world. Inorder to use the cloud services/resource we need to have an AWS Cloud account. Through the AWS Cloud account, aws cloud platform keeps track of resources/services are entitled or owned by whom and who can access, administer and manage these resources/services 
+
+There are 2 types of aws account users are there
+1. Root account user
+2. IAM user
+
+1. Root account user
+When we setup an aws cloud account, an root user will be created and associated with the account through the signup or registration process. The Root account user is the one who has unrestricted access to all the services or resources that are offered by the aws cloud platform. 
+	
+2. IAM user
+An AWS Root account user can setup additional users in his account, to delegate the access to few services/resources of the cloud platform onbehalf of him
+
+From the above we can understand we need to setup an aws account with root user credentails in-order to use the services that are offered by the aws cloud platform.
+	
+#2. 	
+How to setup an aws cloud account?
+The AWS Cloud platform offers free-tier account upon signup. In free-tier account, not all the services are qualified to be free-usage. There are usage limits per each service and should be learnt/understood carefully before using the services.
+	
+There are #3 categories of usage are there in free tier	
+1. Free trails
+2. Free for 12 months of limited usage
+3. always free (based on usage limits)
+	
+refer to the documentation: https://aws.amazon.com/free
+
+important guidelines:
+1. upon setting up the aws cloud account, dont share the root user credentials to anyone
+2. recommended to enable MFA (multi-factor authentication) for the account, for additional layer of security
+3. always upon provisioning a resource/service, please de-provision it immediately (to avoid un-necessary billing)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+AWS Domains
+
+There are lot of cloud services are offered by the AWS Cloud platform, as of now there are more than 200+ services are available. In order to use any of these services on the cloud platform, the user has to navigate through the length list of services to use, it makes the user hard/difficult to use the services.
+So to easily navigate and locate the service AWS cloud platform has introduced AWS Domains. A domain is nothing but group of related services put together under one Label, so that we can navigate into the domain to identify and locate a service easily.
+	
+There are lot of domains are there aspart of the AWS Cloud platform, out of them there are 7 core/popular domains are there listed below
+1. Compute domain
+2. Networking domain
+3. Database domain
+4. Storage domain
+5. Security (IAM) domain
+6. Messaging domain
+7. developer tools
+8. Management Tools domain
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+How to use/access the services/resources offered by the cloud platform?
+The AWS Cloud platform has provided #4 ways in accessing the services/resources of the cloud platform
+
+1. AWS Cloud Management Console
+AWS Cloud Management console is an web application provided by the AWS cloud platform, the AWS account users can authenticate themself by logging into the cloud console to access the services or resources of their cloud account. Here uses can browse the services that are offered by the cloud platform and can perform cloud lifecycle operations on the services/resources they own like
+	1. provisioning/deprovisioning
+	2. scale-out/scale-in
+	3. scale-up/scale-down
+	4. start/stop/restart
+	5. backup/recover
+	6. List all the resources they own
+	
+2. AWS REST api access
+The AWS cloud platform has exposed REST endpoints (HTTP Programs) that can be accessed over the network. Using these endpoints the AWS Cloud account users can access, administer and manage the services/resources of the cloud account/platform
+Through the REST endpoints, the aws has provided programmatic access in controlling/using the cloud platform resources and services. These REST endpoints are integrated by the Third-Party IAC automation tools like Terraform, Cloud Formation etc in managing the AWS Services.
+	
+3. Cloud SDKs
+The AWS cloud platform has provided cloud sdks (SDK stands for software development kit). These are aws cloud platform pre-written programs in different programming languages like
+	1. java
+	2. python
+	3. Ruby
+	4. Go
+	5. PHP
+	6. c++
+	7. javascript
+	etc
+	
+The developers can make use of these sdks provided and build their own software programs in respective languages for creating, managing and administring the cloud infrastructure programmatically
+
+4. AWS Cli
+For an AWS Cloud engineer, to quickly adminster or manage the cloud resources, the AWS Cloud platform has provided AWS CLI tool. The AWS CLI tool provides quick commands like Linux Bash shell, using which the cloud engineer can easily manage the resources of the cloud platform
+
+
+  
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

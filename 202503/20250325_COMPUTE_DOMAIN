@@ -1,0 +1,264 @@
+Compute domain
+---------------
+The computing services that are required for running/hosting an software application are provided aspart of the compute domain. There are 5 services are provided aspart of the compute domain
+1. ec2 instance
+2. elastic beanstalk
+3. elastic loadbalancer
+4. autoscaling group
+5. lambda
+
+1. ec2 instance
+ec2 stands for elastic cloud compute, it is an bare metal machine installed with operating system (AMI) and provided to us aspart of the IAAS layer of cloud platform
+
+1.1 AMI
+The AMI stands for Amazon Machine Image, which are virtual disk image files pre-packaged or pre-installed with operating system and basic software utilities aspart of them. So that we can have ec2 instances or virtual machines being created by importing these machine templates so that the machines are created with minimalistic and sophisticated environment and tools to be used readily
+
+1.2 Shape
+Choose the shape of the machine to be created (cpu and ram)
+1.3 Networking (VPC, Subnet)    
+1.4 Keypair (ssh keys)
+1.5. Storage (EBS Volume)
+and launch the ec2 instance
+--------------------------------------------------------------------------------------------------------------------------------------------
+How to deploy an multi-tier java application on aws cloud infrastructure?
+Multi-tier means there are #2 parts
+1. application on ec2 instance
+2. rds service for storing the data
+
+For this we need to have the infrastructure provisioned and make it ready for deploying the application like
+
+#1. Infrastructure
+1. Networking
+    1.1 vpc
+    1.2 subnet
+    1.3 security groups
+    1.3 internet gateway
+    1.4 route tables
+    etc
+2. rds service (mysql database service) on the private subnets of the vpc to store the data
+3. ec2 instance on the public subnet of the vpc to deploy the application
+
+The project we are deploying is urotaxi application, developed using maven project directory structure. 
+    
+urotaxi
+|-src
+  |-main
+    |-java
+    |-resources
+      |-static (css/js/images)
+      |-templates (html)
+      |-application.yml (database configuration)
+    |-db
+      |-urotaxidb.sql (schema/table scripts)
+|-pom.xml
+
+#2 Information:
+1. application.yml = configuration file that holds the database configuration that application should use in connecting to the database in performing the operations. Before building and deploying the application, we need to update this configuration file with proper RDS Service details like endpoint, username, password letting the application know which database it has to talk to
+
+2. urotaxidb.sql = .sql file contains the necessary db scripts for creating database and tables on the RDS instance, unless the application cannot store/retrieve the data from the database tables
+--------------------------------------------------------------------------------------------------------------------------------------------
+#3. software installation and configuration
+The software application we are delivering is java web application, this requires few softwares, tools and web servers to be installed on the java ec2 machine as below
+1. jdk 17
+2. maven
+3. apache tomcat 11 server (setup/configure)
+  
+1. install jdk17
+sudo apt update -y
+sudo apt install -y openjdk-17-jdk
+
+2. install maven build tool
+sudo apt install -y maven
+
+3. setup and configure tomcat server
+mkdir ~/middleware
+cd ~/middleware
+wget https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.5/bin/apache-tomcat-11.0.5.tar.gz
+tar -xzvf apache-tomcat-11.0.5.tar.gz
+rm apache-tomcat-11.0.5.tar.gz
+
+4. configure apache tomcat server as an initd service
+~/tomcat.service
+
+[Unit]
+Description=Apache Tomcat Web Server
+After=network.target
+
+[Service]
+Type=forking
+Environment=CATALINA_HOME=~/middleware/apache-tomcat-11.0.5
+Environment=CATALINA_BASE=~/middleware/apache-tomcat-11.0.5
+ExecStart=~/middleware/apache-tomcat-11.0.5/bin/startup.sh
+ExecStop=~/middleware/apache-tomcat-11.0.5/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target
+
+sudo cp ~/tomcat.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable tomcat
+-------------------------------------------------------------------------------------------------------------------------------------------
+#3 prepare and deploy the project
+clone or copy the project into the ec2 instance
+mkdir ~/app = create an app directory on the java ec2 instance
+copy the project from your host machine onto the ec2 instance using scp command as below
+scp -i ~/.ssh/javakp.pem $USER_HOME/urotaxi ubuntu@publicip:/home/ubuntu/app/
+  
+
+3.1 create database schema and tables on the rds service instance
+
+1. Install mysql client utility on the java ec2 instance
+sudo apt install -y mysql-client-8.0
+goto the project directory: cd ~/app/urotaxi 
+mysql -hrdsendpoint -uusername -ppassword < src/main/db/urotaxidb.sql = this creates the database schema and tables onto the rds instance
+
+to verify the tables are created or not login into the mysql/> rds instance and run the below queries
+mysql -hrdsendpoint -uuser -ppassword
+mysql/> show databases;
+we should see urotaxidb
+
+3.2 prepare and build the application
+1. modify db configuration values in the application.yml
+vim src/main/resources/application.yml
+here modify url, username password properties
+
+spring:
+  application:
+    name: urotaxi
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://#rdsendpoint#/urotaxidb
+    username: #DB_USER_NAME#
+    password: #DB_USER_PSW#
+    
+2. build the project
+mvn clean verify
+this will generate war file
+
+3. deploy the project
+cp target/urotaxi.war ~/middleware/apache-tomcat-11.0.5/webapps
+
+4. start the tomcat server
+sudo systemctl start tomcat
+
+Now on our host machine open web browser and type the below url to access the application
+http://ec2publicip:8080/urotaxi/index
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

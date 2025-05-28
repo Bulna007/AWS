@@ -1,0 +1,127 @@
+AWS Rds proxy
+-------------
+Amazon RDS Proxy is fully managed, high available database proxy for relational database service. Using the RDS Proxy, makes the applications highly scalable, more resilient to the database failures
+
+The server-side applications that are built on modern technologies like microservices and are deployed on containerized platform environemnt or server-less technology applicationscan have large number of open connections to the database servers. These applications may open / close database connections at an high-rate, that exhaust the database memory and computing resources.
+	
+The RDS Proxy allows us to setup a shared connection pool to the database, that improves the database efficiency and application scalability. Rather than the application managing an connection pool to the underlying database, the RDS Proxy creates an distributed/shared connection pool and distributes the connections to the application whoever has requested.
+-------------------------------------------------------------------------------------------------------------------------------------
+AuroraDb
+AuroraDb is an another Relational database service built on-top of mysql server and postgres-sql database. The AWS Cloudplatform has taken the underlying database server engines of mysql server and postgres and added more features making them cloud ready databases. Either we can provision AuroraDb with mysql-server compatible or postgres-sql database compatible
+
+Features:
+1. High performance and Multi-AZ availability
+2. Auto-scale compute
+3. Low-latecy access across the region replications
+4. Distributed storage for durability, performance and fast recovery
+-------------------------------------------------------------------------------------------------------------------------------------
+DynamoDb
+DynamoDb is an no-sql database management system provided by aws cloudplatform. It is an alternate to RDS Service for storing semi-structured data. There are lot of no-sql databases are available in the market like
+1. MongoDb
+2. Cassendra
+3. CockroachDb
+4. CouchDb
+5. Oracle Bigdata
+etc
+among all these no-sql databases, the DynamoDb has plenty of advantages.
+	
+There are lot of advantages of using DynamoDb when compared with other no-sql database products available in the market:
+advantages:
+1. DynamoDb is fully managed service that is hosted by aws cloudplatform and it takes care of all the cloud lifecycle operations on it. If we use third-party no-sql database, we need to manualy take care of provisioning, installing and managing the lifecycle operations on them.
+	
+2. Optimized for performance at scale: Irrespective of amount of data being stored in DynamoDb, we can achieve the same level of consistency in-terms of performance in accessing the data
+
+3. High availability and durability
+4. Integrates with other AWS Cloudplatform services
+5. Cost effective usage based payment models are available
+
+DynamoDb is an managed no-sql database provided by aws cloud platform, it is scoped to the AWS Region level. So when we create a table in DynamoDb under a aws region, it will be accessible across all the AZs, vpcs and subnets of the region.
+	
+For eg.. if we create a table called "products" within a region us-east-1 it will be scoped to us-each-1 region of the aws account user and will be accessible across all the AZs of the region of the cloud account. We cannot create one more table within us-east-1 region of the same name "products".
+	
+Unlike RDS Service, the DynamoDb is server-less database, and is available at region level for all the aws account users. So a AWS Account user don't need to provision the DynamoDb server instance for storing the data, it is fully self-managed aws service.
+-------------------------------------------------------------------------------------------------------------------------------------
+How to access the DynamoDB table in java program?
+	
+1. generate access keys for your cloud account by going to useraccount menu from top right and click on security credentails.
+2. upon generating the access key id and secret access key with this create a file under ~/.aws/credentails and write the keys as below
+[default]
+aws_access_key_id = YOUR_ACCESS_KEY
+aws_secret_access_key = YOUR_SECRET_KEY
+
+3. To access the DynamoDB table in Java program we need to use AWS SDK and the dependency in pom.xml as below
+<dependency>
+    <groupId>software.amazon.awssdk</groupId>
+    <artifactId>dynamodb</artifactId>
+    <version>2.31.1</version>
+</dependency>
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

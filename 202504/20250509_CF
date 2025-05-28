@@ -1,0 +1,123 @@
+3. Cloud Front (cf)
+-------------------
+Cloud Front is an content delivery network (CDN) server users as intermediatory in caching and serving the static data / web content quickly so that the load on the backend servers of the application reduces.
+    
+The CDN Server softwares are manufactured and distributed by third-party organizations either as opensource or commercial licensed. To use these CDN Servers in hosting our application, the devops engineers has to provision
+    1. Infrastructure
+    2. Networking / Security resources
+    3. Procure License for CDN Server
+    4. Install and Configure
+To route the traffic through the CDN Server to our application
+
+In addition, the devops engineers has to take care of
+    1. High-availability
+    2. Scalability
+    3. Upgradation
+    4. Patching
+    5. Security
+    6. Monitoring
+    etc
+in ensuring the CDN Servers are managed to be available for routing the traffic. 
+    
+Instead of manually taking care of hosting and monitoring the CDN Servers by taking care of all the above aspects. AWS Cloudplatform has provided CloudFront distribution service.
+    
+The AWS CloudPlatform has provided CDN Servers as managed service, is called "Cloud Front Distribution". The AWS Cloudplatform has taken care of hosting the CDN Servers across the edge locations on the Globe. Ther are around 410+ global dispersed edge locations are available with automated network mapping and intelligent routing in serving the content from CloudFront Service
+
+CloudFront service is used for various different purposes:
+1. Accelerating the static content of a WebSite
+2. Streaming audio or video on-demand
+
+How to host an static web application using CloudFront and S3 as CloudFront distribution?
+1. create an S3 storage bucket
+while creating the bucket, block all public access
+
+2. upload the static website into the S3 storage bucket
+
+3. goto CloudFront service and create a new CloudFront distribution
+1. origin domain
+S3 storage bucket from where we want to distribute
+2. origin path = leave as blank
+3. origin access
+origin access control settings (recommended)
+Here client on create new oac and choose in the drop down. this oac acts as authorization code to let CF access the S3 storage bucket.
+    
+4. Web Application Framework (WAF)
+choose: enable security protection
+
+5. Settings
+Price class
+Use all edge locations (best performance)
+Use only North America and Europe
+Use North America, Europe, Asia, Middle East, and Africa
+
+click on create distribution
+
+The CloudFront service will provide IAM Policy that should be attached to the S3 storage bucket to allow CF to access the S3
+goto S3 bucket, navigate to permissions Tab and click on edit bucket policy
+copy and paste the policy provided by CF and save it.
+    
+Wait for cloud front distribution to deploy. once it is done access using domain name of the cloud front.
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

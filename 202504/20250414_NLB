@@ -1,0 +1,72 @@
+2. Network loadbalancer
+Network loadbalancer help us in distributing the network traffic across the network applications. For any network application we have 
+1. portno
+2. protocol
+acts as an identify in receiving and routing the request to the application running on the operating system of the computer
+
+since network loadbalancer is used for distributing the network traffic across any network application, the common identity for any network application is protocol & portno, so it uses the protocol/portno in identifying and distributing the traffic to the appropriate applications
+
+Network loadbalancer works at Layer#4 of the OSI Model Layer protocol, the Layer#4 is Transport layer does 3 responsibilities
+1. segmentation
+2. flow control
+3. error control
+At the transport layer we have protocol being used in exchanging the data, based on ip address and port no of the application we can determine whom the data should be send
+
+Application Loadbalancer vs Network Loadbalancer
+#1. 
+Application loadbalancer should be used especially for loadbalancing the requests across http/https applications only. since ALB routes and distributes the traffic based on Http protocol we can leverage all the capabilities like
+    1. sticky session
+    2. http request-based routing
+        1. path
+        2. header
+        3. host
+        4. query
+        etc
+        in routing the requests
+    3. supports application healthchecks
+    
+where as Network Loadbalancer works across any network protocol in receiving and distributing the traffic across the non-http protocol based applications. So it can only identify and distribute the incoming traffic based on protocol/port no only. We can even use Network Loadbalancer for distributing/loadbalancing the requests across the instances of the web/http application as well, but rest of the capabilities like sticky session, http-based routing etc will not be supported
+
+If we are looking for simple protocol/port based loadbalancing, even for web application as well, the NLB yeilds a great performance when compared with ALB
+
+#2. 
+For an application loadbalancer, the aws cloudplatform will not generate/attaches elastic ip address, rather it generates an dns name using which we need to access the loadbalancer
+
+Network loadbalancer can be associated with ip address in addition to dns name
+
+#3.
+Application Loadbalancer supports healthchecks to determine the application is live or not, inorder to route the traffic to the node.
+    
+Network loadbalancer also support healthchecks, but it only checks whether the targeted server computers is up or not by sending a ping request, but the real/actual application is running or not is unknown
+------------------------------------------------------------------------------------------------------------------------------------
+How to install vsftpd server onto the ubuntu operating system?
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

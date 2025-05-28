@@ -1,0 +1,93 @@
+Elastic beanstalk
+------------------
+What is elastic beanstalk, what is the purpose of it?
+To deploy and deliver the application on the aws cloudplatform we need
+1. compute instance like ec2
+2. network (vpc, subnet, gateways, security groups etc)
+3. Platform softwares to be installed and necessary configurations to be applied on the machine inorder to deploy the application
+
+To address the scalability and high-availability aspects in running the application we need to
+  1. we need to create an AMI or SNAPSHOT out of the application/configurations from the ec2 instance we setup
+  2. Set an auto-scaling group with scaling policies along with Target group and loadbalancer
+  
+The time we need to spend in setting up the infrastructure needed for running the application on the aws cloudplatform is very high. So to address such challenges or difficulties and quickly run the applications on the aws platform, the elastic beanstalk has been provided.
+  
+The idea behind the elastic beanstalk:
+For each technology based application, the platform software requirements in running the application seems to be almost same. For eg.. to run an java web application, the platform software required is
+  1. jdk
+  2. tomcat server
+for most of the applications
+
+setting up these platform softwares for each application seems to be repeatitive process, instead the aws cloudplatform developers identified most commonly used technology stack and pre-created templates out these technology stack called "elastic beanstalk"
+  
+elastic = flexible bean = info stalk =technology , for each technology, build beans (templates) that is used for creating flexible the environments
+
+Now to run the application on aws cloudplatform, we can quickly choose from pre-defined bean stalks templates based on the env or type of the application. So that we can quickly setup the environment 
+
+The elastic beanstalk not only takes care of provisioning the runtime environment like platform software, along with that it takes of provisioning infra services like auto-scaling group, loadbalancers to address the high-availability and scalability.
+  
+All that we need to do to run the application is upload the application binary to the elastic beanstalk asking him to setup the environment, deploy and run the application.
+  
+There are predefined technology stack of applications are supported by aws elastic bean stalk as below
+1. java
+2. tomcat
+3. python
+4. php
+5. go
+6. .net on linux server
+7. .net on windows server
+8. ruby
+9. docker
+10 Node.js
+
+If the technology of our application is not supported by elastic beanstalk, we can make use of the docker. we can package our application as a docker image and pass it to the elastic beanstalk it can support running any technology application
+
+The Elastic beanstalk supports 2 types of environments:
+1. WebServer environment
+2. Worker environment
+
+1. WebServer environment
+WebServer environment provides required software packages, infrastructure for deploying and running http-based applications build on supported platform/technology stack by elastic beanstalk.
+  
+
+
+How to setup and deploy an application on Web Server Environment?
+Pre-requisite:
+1. while setting up the vpc network we need to enable
+  a) dns resolution = enabled
+  b) DNS Hostnames = enabled
+  
+2. for public subnets under which we want to provision the loadbalancer we need to enable auto-generate public ip addresses
+3. if we wish to provision our application ec2 instance on private-subnet we need to must and should attach NAT gateway allowing outbound public network traffic from ec2 instance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

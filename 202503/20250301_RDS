@@ -1,0 +1,66 @@
+RDS Service (Relational database service)
+
+How to install mysql server database on ubuntu machine?
+Note: To install mysql server database on private subnet ec2 instance, temporarily we need to grant public network acess. upon installation we can remove
+
+1. install mysql server database
+sudo apt update -y
+sudo apt install -y mysql-server-8.0
+	
+2. alter mysql_native_password
+sudo mysql -uroot
+alter user 'root'@'localhost' identified with mysql_native_password by 'root';
+
+3. change the bind address
+sudo vim /etc/mysql/mysql.conf.d/mysqld.conf
+search for bind-address property. By default the value is 127.0.0.1, which means only the localhost can only access mysql server
+change it to 0.0.0.0 
+bind-address=0.0.0.0
+	
+restart mysql server instance to listen to updated bind-address
+sudo systemctl restart mysql
+	
+4. add a new user into the database and grant permission to access the database remotely
+mysql -uroot -proot
+create user 'paytmuser'@'%' identified by 'welcome1';
+grant all privileges on *.* to 'paytmuser'@'%';
+exit
+
+upon completing the above installation, dis-associate the subnet from route table, so that it will become private subnet
+
+
+Inorder to access mysql server database from public subnet ec2 instance we need mysql server client utility
+1. ssh into public subnet ec2 instance
+sudo apt install -y
+sudo apt install -y mysql-client-8.0
+	
+Now from public subnet ec2 instance we can login into mysql server database of the private subnet using below command
+mysql -hprivate_ip_mysqlec2 -upaytmuser -pwelcome1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

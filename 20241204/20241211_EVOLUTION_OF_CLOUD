@@ -1,0 +1,128 @@
+How many types of applications are there?
+Broadly we can classify the applications into #4 types
+1. standalone or desktop application
+2. distributed web application
+3. mobile application
+4. batch processing application
+
+3. mobile application
+most of the mobile applications comprises of #2 parts
+	1. backend server application 
+	The backend server application provides business functionality in performing the operations in offering the business services. These take the data from mobile app, perform operation and returns the data back to the mobile app, so that the app can render it.
+
+	2. mobile app (ios/android)
+	mobile apps are build using mobile platform technologies (ios/android) and are distributed by publishing them into relevant platform repositories (appstore/playstore)
+	
+4. batch processing application
+These are back office applications that runs on server-grade hardware infrastructure, usually scheduled to execute periodically or upon an event. These applications deals with volumnous amount of data in performing the operation
+-------------------------------------------------------------------------------------------------------------------------------------
+By exploring the types of applications we can understand, to delivery any of these applications to the world we need
+	1. Infrastructure (computing services/resources)
+	2. Networking 
+	3. Internet
+	4. Platform Softwares and Tools
+	
+How does the business organizations procures the above resources in hosting/delivering the applications to the world or to their customers?
+There are many way a business can go live or host the application let us explore
+
+1. In-house hosting
+The business organization can choose the option of in-house hosting which is also called as "on-premise" in going live. For this the organization has to
+	1. Infrastructure
+		1.1 physical space with air-conditioned room
+		1.2 24/7 powerback
+		1.3 dedicated leased internet lines 
+		1.4 server grade hardware machines in running the application
+		1.5 high-speed network devices like routers, gateways, firewalls etc in supporting massive traffic from the network/internet
+		1.6 security devices for securing the access to the infra and application
+		1.7 standby resources
+		
+	2. platform software
+		2.1 The business organization has to procure software licenses like
+			1. operating system license
+			2. database server 
+			3. application server
+		inorder to host and run the software application 
+		2.2 These platform softwares needs to be downloaded, installed and configured on the underlying infrastructure, so that the software application can be ran against it
+		
+	3. People and maintainance
+		3.1 We need team of administrators that takes care of installing/assembling the hardware resources
+		3.2 Network engineers that takes care of setting up the network and monitor it to ensure it is secured and always available
+		3.3 operational/support engineers, that are responsible for delivering, monitoring and maintaining the application on the infra/environment
+		3.4 periodical backup, restoration incase of crash/failure is an on-going efforts that needs to be conducted round-the-clock whenever necessary
+		3.5 upgradation, patching of the platform software, hardware and software application needs to be taken care
+
+drawbacks:
+1. The initial investment cost in acquiring/leasing the physical space, procuring the infrastructure would be pretty high 
+2. The initial time required in procuring and setting up the infrastructure and environment needed for delivering the software application is quite high, wherein during this period of time the business has hold-on by putting an huge investment which becomes an temporary dead investment
+3. resource/people management like hiring, managing them is very difficult
+4. maintainance and monitoring is an on-going investment cost that needs to be considered in conducting the business
+
+By taking all of these above things into account, we can understand an moderate or small-scale vendor cannot effort in using software platform/application to conduct the business
+For an enterprise organization the risk of investment and maintaining the infra/environment in running the application is quite high
+
+As an alternate to the In-house hosting, Hosting Providers brought into presence
+-------------------------------------------------------------------------------------------------------------------------------------
+Hosting Providers
+------------------
+Data Centers 
+
+To provide hosting services to enterprise large-scale organizations. obviously the computing/infrastructure requirements required in hosting the application will be high, so the data centers offers hosting-solutions on dedicated infrastructure model rather than shared-infrastructure model
+
+The Data Centers does the following inorder to offer hosting-services to the business organizations:
+1. They operation under big buildings
+2. infrastructure / networking
+3. leased internet lines
+4. 24/7 power back
+5. human resources for administring, supporting, networking, monitoring etc
+
+1. bare-metal machines only (no operating system or no platform softwares or tools installed). The business organization has to shop, install and configure their own softwares/tools
+2. choose out of the available machine shapes, which ever they want based on their requirement
+3. infrastructure on lease basis
+4. procure a cluster of computers
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

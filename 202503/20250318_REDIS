@@ -1,0 +1,292 @@
+Elastic Cache
+--------------
+What is cache, where do we use cache?
+
+Applications has to store the business data permanently in a database management system, so that the data can be used at later point of time to conduct various different operations for the business
+
+Based on the usage of the data we can classify the data into 3 categories:
+1. static or fixed data
+2. moderately modified data
+3. frequently modified data
+
+Let us understand these categories of data by considering usecases:
+1. static or fixed data
+static or fixed data means, it will not be changed over the lifetime of the software application. Any change to this data will be done during the maintanance window of the application only
+
+Few of the examples of static data are:
+1. seller information in an e-commerce platform will not be changed
+2. upon publishing an examination results of the students by an university, it would not be changed over the course of time
+etc
+
+2. moderately modified data
+moderately modified data means, the data will be changed, but the tendency or nature of the data being changed is very rare and the chances of happening is very less
+Few examples:
+1. Product information in e-commerce platform is very rarely being modified
+2. Address of an user
+3. Passport or Aadhar information of a person
+etc
+
+3. Frequently modified data or short-lived data
+Frequently modified data or short-lived data means, the data would be modified very frequently during the lifetime of the application. The enduser would be modifying the data by performing various different operations on the data through the application itself like
+
+1. Leaderboards in Game
+2. Stock prices in Share market
+3. Match score in a Cricket
+etc
+All these categories of data are being stored in database management system. So the software application has to be designed to handle and process the above type of data.
+	
+How does the software applications are designed to process these different types of data?
+By default: The software applications are always designed to query the latest snapshot of the data from the database in performing the operation using the data
+
+The application will repeatedly query and fetching the data from database irrespective of the category of the data for each user request to the application. 
+
+But incase of static/fixed data or moderately modified data, since this data remains to be static or constant over the amount of time, repeated query of this data would always result in same data and leads to lot of problems.
+
+Problems:
+1. Traffic between the software application and underlying database in querying the same data will be high and leads to network congession
+2. The load on the database in repeatedly executing the same queries in fetch the same data will be high
+3. unnecessary bandwidth consumption in transferring the same data across the network
+
+Thus results in poor performance and latency in serving the requests to the enduser.
+
+To overcome the above problems in handling static or moderately modified data we need to implement caching.
+	
+What is Cache?
+Cache is an reserved memory location within the application, in which we can store the data temporarily and can retrieve the data very quickly in performing the operation
+So within the application identify the potential data that seems to be
+1. static/fixed
+2. moderately being modified
+that is being frequently queries and accessed by the customers. Then store that data aspart of the cache. So that it significantly improves the performance of the application and reduces the cost in serving the data
+
+Adopting and implementing the cache for an application is quite challenging, there are lot of factors or aspects needs to be considered while implementing the caching solution for an application
+challenges in implementing cache for an application:
+1. Application runs with an limited amount of memory being reserved. Always there is a chance of the application running into out of memory and leads to crash when more and more amount of data is being brought and stored in cache. So we need to have an limit or max boundary on the amount of entries that can be stored in cache
+
+2. we cannot store/cache the data for longer amount of time, there should be rentention policy on how long the data being brought into the cache should retained. after the rentention interval the data needs to be removed from the cache
+
+3. we need to have eviction policy in identifying and removing the data from the cache when we have max entries limit. This can be done through various eviction strategies or algorithms like
+1. LRU (least recently used)
+2. MRU (most recently used)
+etc
+
+The programmers has to write programming logic in storing, managing the data inside the cache by enforcing the above cache management strategies or mechanisms. For this the programmers will endup in writing complex programming logic in maintaining the data in cache.
+	
+since caching the data from an application is a common requirement there are several third-party vendors build caching libraries and frameworks in various different programming languages that can adopted and used within the applications in managing the cache. For eg.. incase of java programming language there are lot of third-party libraries are available as below
+1. ehcache
+2. swarncache
+3. oscache
+4. jcache
+5. coherence cache
+etc
+Now programmers can integrate any one of these libraries in the application inorder to use/manage the data aspart of the cache so the efforts of building the software application for caching will be greatly reduced.
+	
+By integrating the software applications with caching libraries or frameworks we implement application-level caching (kind of local cache within the application). But while using the local cache in a cluster environment we run into lot of problems:
+	1. Each instance of the application running on a cluster has their own copy of the cache which consists same copy of data being cached across other instances as well. Thus resulting in huge cost of caching same data across the instances
+	2. A change in the data through one of the instance of the application reflects in the local cache of the instance and leave the other instances with stale data
+	
+To overcome the challenges in maintaining the cache data across the instances, the distributed caching mechanims are introduced. Here rather than holding the cache at an application instance level. we setup a centralized cache or distributed cache on a dedicated server computer that is accessible over the network across the applications.
+		
+There are various different third-party vendors manufactured and provided distributed caching software like
+	1. Redis cache
+	2. Mem cache
+	3. Hazelcast cache
+	etc
+	
+These caching softwares works similar to a database server software product or an application server, it has to be hosted and running on a dedicated server computer, where the cache is being available and accessible over the network using different protocols including HTTP.
+		
+From the above we can understand to implement cache within an applicatin there are #2 sides of the solution:
+1. The ops engineers has to setup Caching servers on a dedicated infrastructure for this they need to do the below
+	1. provision the infrastructure
+	2. setup network and firewall software and configure for dealing with aspects of security
+	3. install and configure the cache server software on the infra
+	4. scalability, the more the data is being cache the server quickly runs out of memory. so the cache server should be scaled and distributed to run across multiple computers
+	5. high availability
+	6. monitoring
+	7. patching/upgradation
+	etc
+2. The developers has to write the code aspart of the application in integrating and using the cache by accessing the cache server.
+		
+The biggest problem is: manually setting up the infrastructure, installing, configuring the cache server software on a clustered environment is very complex and requires huge manpower resources in managing the server as well. Instead aws cloudplatform has offered elastic cache service which is an managed service offering aspart of cloudplatform.
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Elastic cloud cache service
+The Elastic cloud cache service is an managed service that takes care of provisioning, installing, configuring and managing the third-party cache server software on the aws cloudplatform. It is a similar offering like RDS Service we learnt earlier
+As of now there are 2 cache providers are supported by Elastic cloud cache
+1. REDIS
+2. MEMCACHE
+
+There are differences in-terms of features between these 2 cache providers or engines, based on the requirement of our application in using the cache we need to choose appropriate cache engine while provisioning 
+1. 
+Mem Cache: supported data types: simple key/value pair
+Redis Cache: supported data types: complex types includes lists, sets, hashes and sortedsets etc
+
+2. 
+Mem Cache: Multi-thread support
+Redis Cache: No Multi-thread support
+
+3. 
+Mem Cache: Node upgrade is not supported. (we cannot change the shape of the CacheNode)
+Redis Cache: Node shape upgrade is supported
+
+4. 
+Engine upgradation: both providers supports engine version upgrade
+
+5. 
+Mem Cache: replication is not supported, so fault-tolerance is not available
+Redis Cache: replication is supported, so high availability is guaranteed
+
+6. 
+Mem Cache: data partition and shradding is supported	
+Redis Cache: No support of data partition
+
+7. 
+Mem Cache: doesnt support automatic fail-over
+Redis Cache: optional and can be configured
+
+8.
+Mem Cache: no support for publisher/subscriber model
+Redis Cache: supports publish/subscriber model
+
+9.
+Mem Cache: Supports huge volumes of data to be cached
+Redis Cache: doesnt not support huge of volumes of data
+
+10.
+Mem Cache: no backup and restore support
+Redis Cache: backup and restore is available
+--------------------------------------------------------------------------------------------------------------------------------------------
+How to provision Elastic Cache (redis) on aws cloudplatform?
+Elastic cloud cache is an vpc scoped service, we access the cache only from application. since application instances are deployed on ec2 instance and distributed across the AZs of the vpc region, to make the cache accessible across all the instances of the application the elastic cache has been provisioned at vpc level
+
+1. since we access the cache only from application, we should not provision them on public subnet of the vpc and we need a private subnet to provision the elastic cache service
+
+2. By default aws cloudplatform creates 2 replicas of the elastic cache for fault-tolerance and fail-over safe. so we need 2 subnets distributed across the AZs of the vpc region and we need to setup an subnet group for replicating the cache instances
+
+3. upon provisioning the elastic cache service (redis), to verify the cache is working or not, we need to put data and consume it from the cache. since there is no software application and we are not developers we cannot verify the cache service we provisioned is working or not. To help us in verifying the cache, there is an client-tool available called "redis-tool"
+	
+we need to install redis-tool on public subnet ec2 instance of the vpc region. using that we can connect to redis cache and verify. upon verification we can share the cache endpoint to the developers allowing them to use the cache and integrate aspart of their applications.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+how to install the redis client tool on the ec2 jumpbox?
+sudo apt update -y
+sudo apt install -y redis-tools
+
+redis-cli -h endpoint -pportNo
+set key value = to store the data
+get key = to fetch the data
+
+keys * = returns all the keys in the cache
+ping = to verify the connectivity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

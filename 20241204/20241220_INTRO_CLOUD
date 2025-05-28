@@ -1,0 +1,164 @@
+Cloud computing
+----------------
+Cloud computing is about on-demand delivery of computing resources/services to the world. The cloud computing offers #3 types of services
+1. IaaS = Infrastructure as a Service
+2. PaaS = Platform as a Service
+3. SaaS = Software as a Service
+
+1. IaaS
+IaaS stands for "Infrastructure as a Service". All Computing/Infrastructure resources that are required for running/hosting the applications are provided aspart of IaaS like
+	1. Compute Instances (Computers/Physical Machines)
+	2. Network resources
+		2.1 Gateways
+		2.2 Firewalls
+		2.3 Virtual Private Networks
+		2.4 Subnets
+		2.5 DNS Services
+		2.6 Loadbalancers
+	3. Hardware devices like storage
+etc
+The cloud vendors to offer flexibility in IaaS services they use virtualization technology.
+	
+Hardware Hypervisors:
+1. Microsoft Hyper-v
+2. Xen
+3. VMWare Esxi
+
+The cloud computing providers takes care of managing the lifecycle of compute resources like
+1. provisioning    = creating a new resource
+2. de-provisioning = destroying/deleting the resource
+3. scale-out/scale-in = adding more resources (scale-out) / deleting existing resources (scale-in)
+4. scale-up/scale-down = increasing the capacity of the resources (cpu/ram/storage) [scale-up] / decreasing the resources (scale-down)	
+5. backup/restore  = automatic backup / restore incase of crash recovery
+6. stop/start/restart 
+--------------------------------------------------------------------------------------------------------------------------------------------------
+2. PaaS
+PaaS stands for Platform as a Service. 
+3. SaaS
+SaaS stands for Software as a Service
+From the above we can understand every cloud vendor/platform offers all the above three services.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------	
+There are lot of cloud providers are there in the market, what is the diffference between one cloud provider from another cloud provider?
+The	difference between one cloud provider to a different cloud provider is interms of the service offerings they offer to the world.
+	
+1. Amazon Web Services (AWS) cloud provider
+Amazon is not an technology company, and they dont own any software products (platform/enterprise). So at a core Amazon is very strong in offering IaaS services
+	1. IaaS = built from scratch (machines, network, network devices, network security....)
+	2. PaaS & SaaS = They collaborate with third-party companies inorder to offer PaaS and SaaS services. They have few service offerings interms of PaaS for ML, AI etc
+	
+2. Google Cloud Provider (GCP)	
+Google is an technology company, but not into platform or enterprise software development. So google also offers only IaaS
+  1. IaaS 
+	
+3. Oracle cloud Infrastructure (OCI)	
+it is purely technology company that has lot of platform and enterprise software products of their own. So there are rich at offering PaaS and SaaS services
+PaaS
+1. Oracle Weblogic server
+2. Oracle database
+3. MySql Server
+4. Java
+5. Oracle Integration Cloud (OIC)
+6. Oracle Soa suite
+7. Oracle Service Bus
+
+SaaS
+1. Peoplesoft
+2. EBusiness Suite
+3. JDEdwards
+4. Oracle Apps
+
+4. Microsoft Azure
+1. IaaS
+2. PaaS
+	1. MS-Sql Server
+	2. Mail Exchange Server
+	3. Teams
+	4. Data bricks	
+but they dont have rich SaaS
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

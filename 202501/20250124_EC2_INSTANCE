@@ -1,0 +1,93 @@
+How to provision an ec2 instance on the aws cloudplatform?
+ec2 instance is nothing but a computer (virtual computer) that is provisioned on the aws cloudplatform, that we can use for running the software application. ec2 stands for elastic cloud compute
+
+upon provisioning an ec2 instance, inorder to access it, we should connect it to the network (public). this means before creating/provisioning the ec2 instance we need to setup/create network, so that we can attach the ec2 instance to the network and make it accessible.
+	
+But when we create an aws cloud account, the aws cloudplatform will setup an default vpc & subnet networks across all the regions of the account. So we can make use of the default network while creating ec2 instance instead of settingup new network.
+	
+To provision the ec2 instance:
+1. launch and login into the aws cloud console.
+2. from top-right corner choose a region where we want to provision the ec2 instance (for eg.. ap-south-1)	
+3. goto the services > compute > ec2
+4. click on launch instance to begin provisioning the ec2
+
+Here we need to provide the details of the ec2 instance we want to provision.
+note: in a aws free-tier account, only 720 hours per month of an ec2 instance of t2.micro with ami: linux is free for usage.
+	
+1. provide the instance name, helps us in identifying the machine and its purpose.
+2. choose the AMI (amazon machine image). An AMI is pre-backed operating system image provided by aws cloudplatform. here we can choose the AMI we want to use in provisioning the ec2 instance.
+		2.1 Ubuntu Family
+		2.2 24.04 LTS
+3. choose the shape of the machine (Instance type): t2.micro (only this instance type is qualified for free-tier)
+4. click on create keypair to generate SSH keypair for accessing the ec2 instance
+	1. enter the keypair name
+	2. choose the algorithm (RSA)
+	3. choose the keypair type (.pem)
+	create
+This will allow us to download the keypair.
+upon downloading the .pem file we should save under $USER_HOME/.ssh directory (mandatory)
+note: if we loose the keypair (.pem file), there is no way to re-download/recover it.
+	
+5. choose the keypair we created above in the dropdown list, so the aws will provision the ec2 instance by registering the public key as authorized_keys to the linux machine
+
+6. leave the default options for network settings
+7. leave the default storage options
+click on launch instance
+
+How to access the ec2 instance ?
+1. goto ec2 instance page
+2. click on the ec2 instance out of the list of instances we have on our account
+3. pick the public ip address of the ec2 instance from the details
+
+Windows:
+1. goto gitbash
+Linux/Ubuntu:
+by default ssh client utility is installed and available for usage, so goto terminal
+
+before ssh into the ec2 instance using the .pem file we should change the permissions incase of linux.
+chmod 600 ~/.ssh/keypair.pem
+
+enter the below command from the gitbash or terminal to connect to the ec2 instance:
+ssh -i pathToPemFile ubuntu@publicipec2
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

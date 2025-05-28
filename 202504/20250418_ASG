@@ -1,0 +1,116 @@
+Auto-scaling group (ASG)
+-------------------------
+An Auto-scaling group contains a collection of ec2 instances that are treated as logical grouping (same application is running across these group of instances) for the purpose of automatic scaling and management.
+    
+How to setup auto-scaling group?
+#1. create an AMI 
+  1.1 provision an ec2 instance using the base AMI (ubuntu)
+  1.2 install & configure requires set of software packages and libraries required for running the application
+  1.3 automate the application startup with boot of the machine (for eg.. as an initd service)
+  1.4 apply necessary and right security group restrictions
+  1.5 deploy/run the application binary 
+  
+#2. export the current ec2 instance as an
+  1. AMI
+  2. SNAPSHOT
+  
+AMI = AMI stands for amazon machine image. It is a copy of the EBS Volume of an ec2 instance which is bootable disk from which we can create an ec2 instance directly. AMIs are used for creating indentical ec2 instances
+
+SNAPSHOTS = is a copy of EBS volume of an ec2 instance, these SNAPSHOTs can be copied into another EBS Storage volume but these are not bootable. we can think of a SNAPSHOT as a backup of the disk we have created from an existing ec2 instance. so that incase of crash we can recover the data from using the SNAPSHOT
+
+3 Create ec2 Launch Template
+The auto-scaling group provisions the ec2 instances and manages them based on scaling-policy configurations defined. In order to provision, scale-out/scale-in the ec2 instances, the auto-scaling group requires ec2 launch templates
+
+The ec2 launch templates, holds the configuration that is used for provisioning the ec2 instances
+1. ami
+2. shape
+3. security groups
+4. keypair
+5. storage capacity
+etc
+
+while creating the ec2 launch configuration/template dont choose the vpc/subnet under which the instance should be provisined. because the auto-scaling group provisions and distributes the instances across the subnets of vpc we specified while creating ASG. So if we fix the subnet in the ec2 launch template, then ASG cannot create the instances across the subnets of the vpc
+
+Launch Template Name: roadsterlaunchtemplate
+shape: t2.micro
+ami: roadsterami
+security group: roadsterjavasg
+keypair: none
+storage: default (8gb)
+create launch template
+
+4. create the target group that can be used aspart of the application loadbalancer to distribute the traffic across the instances of the Target group
+The ASG can take care of creating the ALB/NLB with Target group, but the Target Group that ASG creates will have default configuration only.
+For eg..
+If we have configured the ALB Listener to receive the traffic on HTTP/80 port, it configures the Target Group to include the instances under the port 80 itself. in addition there is no way to specify the healthcheck information while configuring the Target group
+
+So instead of ASG creating the target group, we can create the target group manually withour own configuration and plug-in to the ASG.
+Target GroupName: roadstertg
+includes: instances
+protocol: HTTP
+port: 8080
+healthcheck: /roadster/actuator/health
+create the target group
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

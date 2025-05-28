@@ -1,0 +1,130 @@
+Security Groups
+-----------------
+Security Group is an firewall setup/configured to enforce traffic restrictions on an individual resource level.
+	
+1. security groups are created at vpc level and are associated or attached to the individual resources of that vpc, so that we can reuse the security groups if applicable across all the resources of the vpc
+
+2. security groups are stateful, which means it can keep track of request and response
+
+Let us understand stateful means:
+2.1. if we configure an ingress rule allowing an inbound network traffic to the resource, to permit the response for the request received we dont need egress rule allowing outbound network traffic because it is stateful
+
+2.2. similarly if we configure an egress rule allowing an outbound network traffic from the resource to external network/resource, we dont need ingress rule allowing the response to the request we send from the resource 
+
+The inbound traffic rules are configured as Ingress rules and outbound traffic rules are configured as egress rules
+
+3. security groups are applicable for only few types of resources only as below
+	1. ec2 instance
+	2. elastic beanstalk
+	3. loadbalancers
+	4. rds instance
+	5. autoscaling group
+	
+
+security group
+security group is an firewall setup/configured at the individual resource. If we want to enforce traffic restrictions specific to an resource level we can use security groups
+
+There are various different types of applications running under different ports/protocol on our resources of vpc network, how to control access to these resources of applications?
+	
+	
+How to install apache2 server onto the ec2 instance?
+1. sudo apt update -y
+2. sudo apt install -y apache2
+
+How to install tomcat server?
+1. sudo apt update -y
+2. sudo apt install -y openjdk-17-jdk
+3. download the tomcat server binary under ~/middlware directory
+mkdir ~/middleware
+cd middleware
+wget https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.3/bin/apache-tomcat-11.0.3.tar.gz
+
+4. upon download the zip file we need to extract it
+tar -xzvf apache-tomcat-11.0.3.tar.gz
+rm apache-tomcat-11.0.3.tar.gz
+
+5. goto the tomcat/bin directory to start
+cd apache-tomcat-11.0.3/bin
+./startup.sh
+-------------------------------------------------------------------------------------------------------------------------------------
+NACL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

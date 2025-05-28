@@ -1,0 +1,312 @@
+1. RDS Service
+RDS stands for "Relational database service". It is not an aws RDBMS database rather it is an RDS Service that manages an RDBMS database as managed service on aws cloudplatform.
+	
+Based on our previous discussion on installing, configuring and managing the RDBMS database on the infrastructure manually we have several challenges:
+1. In order to install an RDBMS database on the aws cloudplatform, we need to carefully setup aws vpc network with proper security aspects like nacl, security groups etc to ensure the database instance is not exposed to the public network and should be accessible within the vpc network only
+2. The ops engineer or aws cloud engineer has to manually download the database software onto the ec2 instance, install and configure it for usage. Most of the cases we need expertise DBAs in installing and configuring these RDBMS Servers on Cluster mode for
+		1. high-availability
+		2. scalability
+3. To use these database software products we need to procure the software licenses
+4. For ensuring high-availability and scalability we need to run atleast #2 instances of the database across the availability zones of the vpc network. The DBAs has to setup active/passive instances for high-availability which is an tedious process in setting up
+5. monitoring, managing, periodical backup and restoration incase of crash is an on-going maintainance activity that should be handled by dedicated team
+
+From the above we can understand provisioning, installing, configuring and managing the RDBMS database management system seems to be quite challenging and requires
+	1. infrastructure setup
+	2. networking and security configuration
+	3. expertise DBAs to install and configure the RDBMS for high-availability and scalibility
+	4. continous monitoring, periodical backup/restore
+	etc
+	
+since RBDMS is a common requirement for everyone around the world inorder to run the software applications in persisting the data, instead of we dealing with complexities in hosting/running them, the aws cloudplatform has provided RDS Service.
+	
+RDS is not an database server software, rather it is an managed service provided by aws cloudplatform that supports provisioning and managing popular database softwares on aws cloudplatform	
+
+RDS Service takes care of:
+1. provisioning (ec2 instances, installation, configuration)
+2. deprovisioning (uninstalling)
+3. securing (access)
+4. high-availability
+5. scalability (storage/performance)
+6. patching
+7. upgradation
+8. continous backup
+9. restoration (in-case of crash)
+10. monitoring
+etc
+the underlying RDBMS database software on the cloud platform.
+From this we can understand all the cloud lifecycle operations on the RDBMS database server are taken care by RDS Service itself. So we can quickly have an Database Instance available for usage in a software application.
+	
+RDS service supports provisioning and managing the below database server softwares:
+1. Oracle database
+2. Mysql server database
+3. Postgres
+4. MariaDb
+5. Microsoft SqlServer
+-------------------------------------------------------------------------------------------------------------------------------------
+How to provision and access an RDS Service on aws cloudplatform?
+Since we are going to access the database within our application, we need to ask RDS Service to provision the RDBMS Database software under our subnet of the vpc in which our application is running.
+	
+#1 For this we need to have an vpc network
+vpc name: redbusvpc
+cidr: 172.1.0.0/16
+	
+#2. create subnets
+There are few points to remember:
+	1. RDS Database is always recommended to be provisioned on private subnets only for security and accessibility aspects
+	2. Atleast we need #2 private subnets across the AZ's of the vpc for high-availability and scalability. So that RDS Service can provision the database on multiple instances across these private subnets we provided
+2.1 redbusprvsn1 [172.1.1.0/24]		
+2.2 redbusprvsn2 [172.1.2.0/24]		
+
+To access the RBDMS database provisioned on the private subnet we need a jumpbox created on public subnet of the vpc, wherein we can ssh and connect to database instance
+2.3 redbuspubsn3 [172.1.3.0/24]
+
+#3. create Internet Gateway
+Internet Gateway Name: redbusigw
+Attach: redbusvpc
+
+#4. create Routetable to route public subnet traffic through Internet gateway
+Route table: redbusigwrt
+Subnet association: redbuspubsn3
+Route Rule:
+172.1.0.0/16   local
+0.0.0.0/0      redbusigw
+
+#5 setup nacl rules for private and public subnets separately
+nacl#1: redbuspubsnnacl
+vpc: redbusvpc
+subnet association: redbuspubsn3
+Inbound
+rule#   protocol   source cidr    port        action
+100     ssh        0.0.0.0/0      22          allow
+101     tcp        0.0.0.0/0      1024-65535  allow
+102     tcp        172.1.0.0/16   3306        allow
+*       any        anywhere       any         deny
+
+Outbound
+rule#   protocol   source cidr    port        action
+100     ssh        0.0.0.0/0      22          allow
+101     tcp        0.0.0.0/0      1024-65535  allow
+102     tcp        172.1.0.0/16   3306        allow
+*       any        anywhere       any         deny
+
+
+nacl#2: redbusprvsnnacl
+vpc: redbusvpc
+subnet association: redbusprvsn1, redbusprvsn2
+Inbound
+rule#   protocol   source cidr    port        action
+101     tcp        172.1.0.0/16   1024-65535  allow
+102     tcp        172.1.0.0/16   3306        allow
+*       any        anywhere       any         deny
+
+Outbound
+rule#   protocol   source cidr    port        action
+101     tcp        172.1.0.0/16   1024-65535  allow
+102     tcp        172.1.0.0/16   3306        allow
+*       any        anywhere       any         deny
+
+#5 security groups
+We need to create #2 security groups one for RDS Service and another for jumpbox
+
+1. 
+security group: redbusjumpboxsg
+vpc: redbusvpc
+Ingress
+Protocol    source_cidr   port
+ssh         0.0.0.0/0     22
+
+Egress
+Protocol    source_cidr   port
+any         anywhere      any
+
+2. security group: redbusrdssg
+vpc: redbusvpc
+Ingress
+Protocol        source_cidr   port
+mysql/auroradb  172.1.0.0/16  3306
+
+Egress
+Protocol    source_cidr   port
+any         anywhere      any
+
+upon completing the networking required, its time to provision the RDS Service.
+	
+1. create subnet group
+The subnet group is set/group of subnets under different availability zones of the vpc.
+	
+When we ask AWS Cloudplatform to provision an RDS Instance, it asks for subnet group inorder to create database instances. The purpose of the subnet group is to let the aws cloudplatform choose any of the subnets defined in the subnet group to provision and manage the database Instances
+RDS is an fully managed service that takes care of provisioning, replicating the db services across the multiple subnets of the subnet group we provided for HA and scalability.
+	
+While creating the subnet group we need to choose the AZs of the vpc region and the subnets of the vpc under which we want RDS service to provision database instances.
+	
+	
+2. Provision the RDS Instance
+1. Goto RDS Dashboard and client on create database
+Choose the database creation Mode: Standard / Easy, choose Standard
+2. Choose the databaseType:
+	1. aurora db (compatible with mysql)
+	2. aurora db (compatible with postgres)
+	3. mysql
+	4. postgres
+	5. oracle database
+	6. maria db
+	7. Ms-sql server
+	8. DB2
+
+Choose: MySql Server
+Engine Version: MySQL 8.0.x
+Templates:
+	1. Production
+	If we choose production, production grade dabase server setup will be done like
+		1. multi-az (active/passive) 
+		2. read-replicas (scalability)
+		3. EBS Storage class
+		4. Backup policy
+		5. Shape
+		6. Enable autoscaling
+	2. Dev/Test
+	used in sandbox environment and with active/passive but no read-replicas
+	3. Free tier
+	
+3. Db Cluster Name: paytmdb
+4. Manager username: root
+5. Credential Management: Self managed
+	Enter password: root
+6. DB Instance class: Shape
+7. Storage Type: General Purpose SSD
+8. Compute Resource: Dont connect
+9. Db Subnet group: The one we created before this (paytmdbgroup)
+10. Existing vpc security group
+11. Public access: No
+launch
+
+upon provisioning the RDS Service, it provides RDS Endpoint to access the service
+
+How to connect to the RDS Service?
+Inorder to connect to the RDS Service we provisioned above, we need a jumpbox created under the public subnet of the RDS Instance vpc network
+1. create an ec2 instance under one of the public subnet of the paytmvpc
+2. ssh into the ec2 instance and install mysql client utility as below
+sudo apt update -y
+sudo apt install -y mysql-client-8.0
+	
+3. login to the rds service instance using rds endpoint as below
+mysql -hendpoint -uusername -ppassword
+
+within the mysql prompt we can use below queries to test
+show databases;
+create database paytmdb;
+use paytmdb;
+
+create Table: create table accounts(account_no integer primary key, account_holder_nm varchar(50));
+Insert data: insert into accounts values('1', 'Rob');
+
+To query the data: select * from accounts;
+
+To quit from mysql prompt: exit
+-------------------------------------------------------------------------------------------------------------------------------------
+AWS RDS Proxy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

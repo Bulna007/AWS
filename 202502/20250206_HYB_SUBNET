@@ -1,0 +1,83 @@
+3. hybrid subnet
+-----------------
+Hybrid subnet is partially opened to the public network. All the outbound network traffic from the subnet resources to the public network is allowed and all the inbound traffic from public network to the subnet resources are blocked in an Hybrid subnet
+
+Why do we need Hybrid subnet?
+When we are hosting the software application behind the load balancer, all the public network traffic towards our application will be pass-through loadbalancer only. In such case we dont need our application/underlying ec2 instance to be exposed and made it accessible directly to the public network. So we can host our application on private subnet itself.
+	
+But many of the times the software application that is running on the ec2 instance may want to access external resources/services/applications that are on public network for performing the operations like an ecommerce application running on an ec2 instance may want to talk to an payment gateway/banking gateway to process the online orders. In this case we dont need inbound network traffic from public network, but we still need outbound network traffic from the subnet resources to the public network and hence we need Hybrid subnet
+
+The aws cloudplatform has provided an special network device called "NAT Gateway". NAT stands for network address translation, the NAT gateway sits somewhere else between the subnet and the public network. It performs #2 activities
+1. It captures all the outbound network traffic from the subnet resources towards the public network and translates the ip address of the source into nat ip address hiding the details of the original source/resource from where the traffic is orginated from and hence making it more secure
+2. all the inbound network traffic from external network towards the subnet resources will be blocked.
+hence making the network more sure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

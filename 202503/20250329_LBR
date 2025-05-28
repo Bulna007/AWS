@@ -1,0 +1,122 @@
+2. elastic loadbalancer
+-----------------------
+There are 3 types of loadbalancers are supported by the aws cloudplatform
+1. Classic Loadbalancer (not available/deprecated)
+------------------------------------------------------    
+1. Application loadbalancer (ALB)    
+2. Network loadbalancer (NLB)
+3. Gateway loadbalancer (GLB)
+    
+1. Application loadbalancer (alb)
+Application loadbalancer is also called as "HTTP" loadbalancer, because it distributes the network traffic across the instances of web applications based on http protocol.
+    
+http protocol = Hypertext transfer protocol, used for exchanging the web or html pages over the network. The client and server application communicates with each other over the network by exchanging the http request/response between them.
+    
+Application Loadbalancer is an region level service that is hosted at vpc level of the region and helps us in distributing the network traffic across the instances of the application distributed on the availability zones of the region.
+    
+1.1 Routing Rules
+The application loadbalancer supports routing the requests across the instances of the application based on the routing rules that can be configured based on http request
+    1. path
+    2. query parameter
+    3. header
+    etc
+    
+1.2 load balancing algorithms
+1. round-robin = distributes the traffic across the instances of the application within the Target Group evenly. Usually a choice to be used when all the machines in the Target group are of same shape
+
+2. weighted-route = For each node in the Target group we can assign weighted percentage
+Node1 = 60%
+Node2 = 40%
+this means out of 100 requests, 60 should be routed to Node1 and 40 requests should be routed to Node2. This should be choosen when the Nodes in the Target group has different instance shapes
+
+3. Healthchecks
+The Application loadbalancer supports healthchecks in routing the traffic only to the healthy application instances.  The developer of the application builds an healthcheck endpoint within the application, upon accessing it, it reports the status of the application (running/un-healthy..). If health an Http Status:200 and incase of un-healthy an error status code will be returned based on the error.
+    
+When we are defining the Target group with our application instances, we need to configure healthcheck endpoint of the application as well.
+
+TargetGroup: gotripTargetGroup
+Node1: ec2 instance (ip), server port, healthcheck endpoint
+
+The Target Group periodically hits the healthcheck endpoint configured for each node and reports health/unhealthy. Based on this the application loadbalancer picks the healthy nodes in distributing the traffic among the instances.
+    
+4. Sticky Sessions
+upon enabling the sticky session, the application loadbalancer keeps track of the client and routes always the client traffic to the same instance of the application within the Target group
+
+
+    
+
+
+    
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
