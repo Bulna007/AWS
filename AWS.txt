@@ -1,0 +1,517 @@
+Q.) What is cloud computing and cloud platform?
+Ans:
+Cloud computing or cloud platform is all about on-demand delivery of computing services/resources to the world.
+
+Here the computing services refers to:
+i. Infrastructure (Computers/Network)
+ii. Firewall
+iii. Security devices
+iv. Platform software (Database servers)
+
+Q.) What is an software application?
+Ans:
+For an business organization or an enterprise to conduct or provide business services to their customers around the world, they need software applications because manually providing the business services has lot of limitations or dis-advantages
+i. The pace at which the business services are offered to the customers will be very slow.
+ii. Reachability of the services to the customers will be limited to the physical location where the business is operating.
+iii. Accuracy in offering the services will not be high.
+iv. Fraud elimination is very difficult.
+
+To overcome these limitations in offering the business services, we need software application.
+
+A software application comprises of bunch of programs written or developed using programming languages (java/.net/scala/python) by the developers in order to fulfill the requirements of the business in offering the services to their customers.
+
+Upon developing the software application, it needs to be hosted/delivered to the end user/business, so that it becomes accessible and usable.
+In order to deliver the software application we need:
+i. Infrastructure
+ii. Network resources
+iii. Platform software
+
+The cloud computing offers such computing services/resources on-demand, so that the business can leverage them in delivering the applications quickly and make them reach to the market.
+
+
+Q.) How does the software applications are delivered?
+Ans:
+The process of delivering the software applications purely depends on the type of the application.
+There are broadly #4 types of applications are there:
+i.
+
+
+
+
+
+
+
+
+
+Introduction to AWS cloud platform
+----------------------------------
+#1. AWS cloud platform offers various different resources/services to the world. In order to use the cloud services/resource we need to have an AWS cloud account. Through the AWS cloud account, aws cloud platform keeps track of resources/services are entitled or owned by whom and who can access, administrator and manage these resources/services. 
+
+There are 2 types of aws account users are there:
+1. Root account user
+2. IAM user
+
+1. Root account user
+When we setup an aws cloud account, an root user will be created and associated with the account through the signup or registration process. The root account user is the one who has unrestricted access to all the services or resources that are offered by the aws cloud platform.
+
+2. IAM user
+An AWS Root account user can setup additional users in his account, to delegate the access to few services/resources of the cloud platform onbehalf of him
+
+From the above we can understand we need to setup an aws account with root user credentails in-order to use the services that are offered by the aws cloud platform.
+	
+#2. 	
+How to setup an aws cloud account?
+The AWS Cloud platform offers free-tier account upon signup. In free-tier account, not all the services are qualified to be free-usage. There are usage limits per each service and should be learnt/understood carefully before using the services.
+	
+There are #3 categories of usage are there in free tier	
+1. Free trails
+2. Free for 12 months of limited usage
+3. always free (based on usage limits)
+	
+refer to the documentation: https://aws.amazon.com/free
+
+important guidelines:
+1. upon setting up the aws cloud account, dont share the root user credentials to anyone
+2. recommended to enable MFA (multi-factor authentication) for the account, for additional layer of security
+3. always upon provisioning a resource/service, please de-provision it immediately (to avoid un-necessary billing)
+--------------------------------------------------
+AWS Domains
+-----------
+There are lot of cloud services are offered by the AWS Cloud platform, as of now there are more than 200+ services are available. In order to use any of these services on the cloud platform, the user has to navigate through the list of services to use, it makes the user hard/difficult to use the services.
+So to easily navigate and locate the service AWS cloud platform has introduced AWS Domains. A domain is nothing but group of related services put together under one Label, so that we can navigate into the domain to identify and locate a service easily.
+	
+There are lot of domains are there aspart of the AWS Cloud platform, out of them there are 7 core/popular domains are there listed below
+1. Compute domain
+2. Networking domain
+3. Database domain
+4. Storage domain
+5. Security (IAM) domain
+6. Messaging domain
+7. developer tools
+8. Management Tools domain
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+How to use/access the services/resources offered by the cloud platform?
+The AWS Cloud platform has provided #4 ways in accessing the services/resources of the cloud platform
+
+1. AWS Cloud Management Console
+AWS Cloud Management console is an web application provided by the AWS cloud platform, the AWS account users can authenticate themself by logging into the cloud console to access the services or resources of their cloud account. Here users can browse the services that are offered by the cloud platform and can perform cloud lifecycle operations on the services/resources they own like
+	1. provisioning/deprovisioning
+	2. scale-out/scale-in
+	3. scale-up/scale-down
+	4. start/stop/restart
+	5. backup/recover
+	6. List all the resources they own
+	
+2. AWS REST api access
+The AWS cloud platform has exposed REST endpoints (HTTP Programs) that can be accessed over the network. Using these endpoints the AWS Cloud account users can access, administer and manage the services/resources of the cloud account/platform
+Through the REST endpoints, the aws has provided programmatic access in controlling/using the cloud platform resources and services. These REST endpoints are integrated by the Third-Party IAC automation tools like Terraform, Cloud Formation etc in managing the AWS Services.
+	
+3. Cloud SDKs
+The AWS cloud platform has provided cloud sdks (SDK stands for software development kit). These are aws cloud platform pre-written programs in different programming languages like
+	1. java
+	2. python
+	3. Ruby
+	4. Go
+	5. PHP
+	6. c++
+	7. javascript
+	etc
+	
+The developers can make use of these sdks provided and build their own software programs in respective languages for creating, managing and administring the cloud infrastructure programmatically
+
+4. AWS Cli
+For an AWS Cloud engineer, to quickly adminster or manage the cloud resources, the AWS Cloud platform has provided AWS CLI tool. The AWS CLI tool provides quick commands like Linux Bash shell, using which the cloud engineer can easily manage the resources of the cloud platform
+
+
+AWS Cloud Platform Architecture
+-------------------------------
+The AWS Cloud Platform Architecture refers to how the aws has spread across in oferring the cloud services to the people around the world.
+
+a. AWS Regions:
+---------------
+A regions are the geographical locatios in different countries around the world, from where AWS is operating and offering the cloud services to the world.
+A region is not a country, there can be multiple regions within a country, so we can think of a region as a place within a country from where it is operating and providing services.
+
+For e.g.. In United States there are #4 regions
+i. us-east-1
+ii. us-east-2
+iii. us-west-1
+iv. us-west-2
+
+Note: AWS has spread across 30+ regions at different grographical locations around the world. Upon logging into the AWS management console, otop right corner we need to choose the AWS region under which we want to host or manage the services or resources.
+
+Q.) How do we choose a Region to be used for creating or hosting the cloud services/resource in the AWS Cloud platform?
+Ans: There are #3 factors based on which we choose a region to use the services:
+i. Nearest geographical location closest to the users of the business, so that the latency in accessing the services will be low.
+ii. Government compliances and restrictions.
+iii. Pricing and taxation.
+
+b. Availability Zones:
+----------------------
+Within an AWS Region, AWS has setup multiple availability zones. per each aws region there are minimum #2 availability zones are guaranteed to be exists for high availability.
+	
+Note: AWS recommends us to distribute the services/resources across the Availability Zones for high availability.
+	
+An Availability Zone is nothing but group of data centers within an location setup by the aws cloud platform offering cloud services at that location. These AZ locations within the region are selected carefully by evaluating various different parameters like
+
+1. climatic conditions
+2. power availability
+3. tornados
+4. volcanos
+5. earth quakes
+etc
+
+so that likely-ness of having all the availability zones of region going down is very less. These Availability zones are inter-connected with dedicated high-speed leased internet lines to ensure there is no network latency across these availability zones of the region.
+
+c. Edge Locations:
+------------------
+Edge locations are the mini data centers co-located across the regions of the aws cloud platform. There are few global/shared services are there in aws cloud platform like
+1. cloud front
+2. Route53
+3. IAM Registry
+etc
+to reduce network latency in distributing/accessing such global services to the customers, the aws cloud platform has setup mini-data centers around ther regions from where they operate these shared/global services.
+	
+(or)
+
+The Edge locations are replicated mini-data centers across the regions in offering global services at low-latency.
+----------------------------------------------------------
+
+Scope of Services
+-----------------
+The scope of services indicates where the resource/service is created/bounded to which scope on the AWS cloud platform, so that the cloud engineers can provision and manage them.
+
+There are around 200+ services are offered by the AWS cloud platform, these services are categorized into #3 different categories/scopes based on their availability/accessibility.
+
+a. Global scope
+b. Region scope
+c. Availability Zone scope
+
+a. Global scope
+---------------
+The service/resource categorized to the global scope are created and accessible across the regions of the cloud platform.
+A change in these services would be affected across all the regions of the cloud account.
+
+Let us understand by looking at few of the global services:
+i. Route53 (DNS Service)
+Amazon Route53 is an DNS Service. If we publish an DNS entry into the Route53 service, this DNS entry should be propagated across all the regions of the AWS cloud platform.
+
+ii. IAM Registry (authentication/authorization)
+For accessing the AWS cloud platform we need an AWS account. The AWS account we setup is scoped global scope. This means an AWS account user can access the cloud platform services of all the regions. If there is a change in the AWS account like adding an new IAM user or changing permissions for a user should reflect across all the regions on the platform.
+
+iii. AWS Cloud Front (CDN Service)
+AWS Cloud Front is an CDN service (Content Delivery Network) into which we can publish static resource/content like css, js, images, icons, fonts, html, audio, video, etc. and these resources are replicated across all the regions of the cloud platform, so that the static resource can be served to the customers closest to the region from where they are accessing.
+
+Any changes to the static resources that are published into the cloud front would be reflected across all the regions globally.
+
+b. Region scope
+---------------
+These are the services that are created at the AWS region scope and are accessible and available within the region only.
+
+i. DynamoDB
+It is an no-sql database service offered by the AWS cloud platform. It is an region scoped service and is created within the region we provisioned. So if we create an dynamodb table in the AWS region, the table and its data will be replicated across all the AZs of the region.
+
+ii. S3 Bucket
+S3 is an object storage service in which we store objects like file, images, videos, audio, etc.
+The objects we store in S3 storage bucket are available across all the AZs of the regions.
+
+iii. Elastic Load balancer
+Load balancer is an region scoped service, so that it can distribute the traffic between the resources that are distributed across the AZs of the regions
+
+For more example of region-scoped services are
+iv. Virtual private cloud network (VPC)
+V. Relational Data Service (RDS)
+
+c. Availability Zone scope
+--------------------------
+These services are scoped/created at AZs scope and are visible and managed at the AZ level.
+
+i. EC2 Instance
+An EC2 Instance is provisioned and hosted within an AZ only.
+
+ii. Elastic Block Storage
+EBS is an hard disk attached to the EC2 Instance, an EC2 is an AZ scope service, the EBS is also scoped at AZ only.
+
+iii. Subnet
+Subnets are created at AZ level.
+-----------------------------------------------------
+
+Q.) How to provision an ec2 instance on the AWS cloud platform?
+Ans: An ec2 instance is nothing but a computer (virtual computer) that is provisioned on the AWS cloud platform, that we can use for running the software application. ec2 stands for elastic cloud compute
+
+upon provisioning an ec2 instance, in order to access it, we should connect it to the network (public). this means before creating/provisioning the ec2 instance we need to setup/create network, so that we can attach the ec2 instance to the network and make it accessible.
+      
+But when we create an AWS cloud account, the AWS cloud platform will setup an default VPC & subnet networks across all the regions of the account. So we can make use of the default network while creating ec2 instance instead of setting up new network.
+      
+To provision the ec2 instance:
+1. launch and login into the AWS cloud console.
+2. from top-right corner choose a region where we want to provision the ec2 instance (for e.g. ap-south-1)  
+3. go to the services > compute > ec2
+4. click on launch instance to begin provisioning the ec2
+
+Here we need to provide the details of the ec2 instance we want to provision.
+note: in a AWS free-tier account, only 750 hours per month of an ec2 instance of t2.micro with AMI: Linux is free for usage.
+      
+1. provide the instance name, helps us in identifying the machine and its purpose.
+2. choose the AMI (amazon machine image). An AMI is pre-backed operating system image provided by AWS cloud platform. here we can choose the AMI we want to use in provisioning the ec2 instance.
+            2.1 Ubuntu Family
+            2.2 24.04 LTS
+3. choose the shape of the machine (Instance type): t2.micro (only this instance type is qualified for free-tier)
+4. click on create keypair to generate SSH keypair for accessing the ec2 instance
+      1. enter the keypair name
+      2. choose the algorithm (RSA)
+      3. choose the keypair type (.pem)
+      create
+This will allow us to download the keypair.
+upon downloading the .pem file we should save under $USER_HOME/.ssh directory (mandatory)
+
+Note: if we loose the keypair (.pem file), there is no way to re-download/recover it.
+      
+5. choose the keypair we created above in the dropdown list, so the AWS will provision the ec2 instance by registering the public key as authorized_keys to the linux machine
+
+6. leave the default options for network settings
+7. leave the default storage options
+click on launch instance
+
+How to access the ec2 instance ?
+1. go to ec2 instance page
+2. click on the ec2 instance out of the list of instances we have on our account
+3. pick the public Ip address of the ec2 instance from the details
+
+Windows:
+1. goto gitbash
+Linux/Ubuntu:
+by default ssh client utility is installed and available for usage, so goto terminal
+
+before SSH into the ec2 instance using the .pem file we should change the permissions incase of linux.
+chmod 600 ~/.ssh/keypair.pem
+
+enter the below command from the gitbash or terminal to connect to the ec2 instance:
+ssh -i pathToPemFile ubuntu@publicipec2
+
+----------------------------------------------------------------
+
+1. Networking
+
+The Networking domain offers networking related services or resources like
+1. routers
+2. firewalls
+3. gateways
+4. VPN
+etc.
+which are required for inter-connecting the resources and enforcing traffic restrictions in securing the access to these resources.
+      
+The AWS Cloud platform offers 10+ different services as part of the network domain:
+1. VPC
+2. Subnet
+3. Internet Gateway
+4. Nat Gateway
+5. Security groups
+6. NACL rules
+7. Route Tables
+8. VPC peering
+9. VPC Endpoint
+10. VPN Gateway
+etc.
+
+restrictions on different resources across each department?
+We can keep them in separate VPC per each business unit or department
+
+2. per project
+We can create VPCs per project and can isolate the resources of one project from another.
+      
+3. per environment
+There can be multiple environments like development, QA environment, UAT env and prod env etc. We develop, deploy and deliver the software application across the stages or environments.
+Q.) How to keep the resources of one environment isolated from another environment?
+per each environment create one VPC so that only the resources within that VPC only can communicate with each other isolating from another.
+      
+Q.) How to create an VPC network on AWS cloud platform?
+Ans:
+To create an VPC network, we need to define an name for the network. The name acts as an identifier through which we can understand what this VPC network has been created for.
+e.g. financevpc or hrvpc etc
+
+To ensure all the resources are part of the VPC network we need to define CIDR range while creating the VPC. So that all the resource that are part of the VPC will be assigned with the Ip address within the CIDR range only.
+
+1. VPC name = to identify the usage/purpose of the VPC
+2. CIDR = 10.0.1.0/24, here 10.0.1 is network address 1 - 254 are host addresses assigned to the resources when they are connected to the network
+
+
+2. subnet
+VPC is an large/big isolated network that spans across all the availability zones of the region in which it has been created. By default all the resources within the VPC can access each other but we might have different resources being used in running the application like
+1. software application running on ec2 instance
+2. database server
+3. s3 storage bucket
+4. load balancer
+etc.
+
+if all these resources are placed under the VPC directly we cannot enforce different traffic restrictions allowing them to access on the network. for e.g.
+      1. an software application that is running on ec2 instance only should have access to the database server and s3 storage bucket.
+      2. both database server and s3 storage bucket should be on the private network only.
+      3. the load balance should be on public network and should route the traffic towards the application running on ec2 instance
+      
+Q.) How can we have the resources being part of one network can be enforced with different traffic restrictions?
+Ans:
+By having them under VPC, we cannot control or apply different traffic restrictions that is where subnet has been introduced.
+      
+An VPC network can be broken down into smaller sub-networks through the help of subnet in the AWS cloud platform, so that for each subnet we can enforce different traffic restrictions in controlling the access to the resources of the subnet.
+      
+Characteristics:
+1. A subnet is created within the availability zone of a VPC region
+2. per VPC we can create 200 subnets
+3. it is recommended to create at least #2 subnets across the availability zones of the VPC region so that we can distribute the resources across the subnets/availability zones for high-availability
+
+Q.) What is the purpose of Subnet?
+There are 2 reasons why we create a subnet
+1. to enforce traffic restrictions on different group of resources differently within an VPC network
+2. to distribute resources across the availability zones of the VPC region
+
+Q.) How to create a subnet?
+To create a subnet we need to specify the below things:
+1. We should specify CIDR notation indicating the range of Ip address to be allotted to the resources that are provisioned within the subnet. Always the subnet CIDR should be within the subset of VPC CIDR
+
+For e.g. if the VPC CIDR is : 10.1.0.0/16 means, the network address of the VPC is 10.1, so all the resources that falls under this VPC network will have initial network address as "10.1.*.*"
+      
+So for the subnet of the VPC, the network address must and should be "10.1.*.*" so we can specify the subnet CIDR, within range of 10.1.1.0/24 - 10.1.255.0/24
+      
+2. Name of the VPC in which this subnet should be created
+3. Subnet name
+4. Availability zone of the VPC region in which the subnet should be created
+
+There are 3 types of subnets are there in AWS cloud platform.
+1. private subnet
+2. public subnet
+3. hybrid subnet
+
+1. private subnet
+By default when we create an subnet within a VPC, it would be private subnet only. The resources within a private subnet will have access to only other resources of the same VPC only. Any other resources that are outside the VPC cannot access the private subnet resources.
+      
+2. public subnet
+public subnet is connected to the public network/internet, so all the resources that are provisioned under an public subnet are accessible from the external network.
+      
+By default when we create an subnet under a VPC, it will be private subnet only. So in order to make a subnet as public we need to perform below activities
+
+1. create VPC network
+VPC name: hrvpc
+CIDR: 10.1.0.0/16
+      
+2. create subnets within the availability zones of the VPC
+2.1 subnet1
+subnet name: hrsn1
+CIDR: 10.1.1.0/24
+VPC: hrvpc
+availability zone: az1
+      
+2.2 subnet2
+subnet name: hrsn2
+VPC: hrvpc
+VPC CIDR: 10.1.2.0/24
+availability zone: az2
+      
+3. create an internet gateway
+Internet gateway is an AWS network device that is always plugged-in into public internet network. To make an subnet as public subnet we need to create Internet Gateway (IG) attach to the VPC network in which the subnet exits
+
+internet gateway: hrig
+By default when we attach internet gateway to the VPC, the subnets of the VPC will not become public subnets. Because there is no route rule defined to the VPC router asking him to route the traffic of public network through Internet gateway for that subnet.
+      
+4. Route Table (RT)     
+By default when we create an VPC network, the AWS cloud platform will create an default route table associated with all the subnets of the VPC. The default route table is populated with an default route rule allowing all the traffic within the VPC CIDR resources.
+      
+CIDR         target
+10.1.0.0/16  VPC
+
+Now we need to add an additional route rule routing the traffic from or to external resources through internet gateway. But if we add this rule to the default route table, since it is applied to all the subnets of the VPC, every subnet becomes public subnet. so to make a specific subnet only as public subnet we need to create a separate route table associated with that subnet of the VPC network.
+      
+like hrigwrt (hr internet gateway route table) and associate it with hrsn1. Then add the new routing rule to allow public network traffic through internet gateway.
+      
+Note: while creating the subnets, name them appropriately like ending with private, public etc. to quickly identify the type of the subnet.
+
+
+Q.) How to access a private subnet resources from external network?
+Ans:
+We cannot access an private subnet resource for e.g. an ec2 instance from an external network. For this:
+1. We need to have an public subnet under our VPC network.
+2. create an jump box or bastion host which is an temporary machine under public subnet of the VPC network
+3. copy the private key of the private subnet resources onto the jump box
+4. SSH onto the jump box and from there SSH onto the private subnet resource
+once we are done in accessing the private subnet resource through jump box we need to deprovision it.
+
+Q.) How to copy the SSH private key file onto the bastion/jump box machine?
+we can use scp (secure copy) command to copy any file from one machine to the another as below
+
+scp -i pathToIdentityFileofJumpbox localFileToCopy ubuntu@jumpboxip:/directoryLocation
+
+upon copying the private key file onto the jump box machine we need to change the permissions of the key file using
+chmod 600 ~/.ssh/keyFile
+
+
+3. hybrid subnet
+-----------------
+Hybrid subnet is partially opened to the public network. All the outbound network traffic from the subnet resources to the public network is allowed and all the inbound traffic from public network to the subnet resources are blocked in an Hybrid subnet
+
+Why do we need Hybrid subnet?
+When we are hosting the software application behind the load balancer, all the public network traffic towards our application will be pass-through load balancer only. In such case we don't need our application/underlying ec2 instance to be exposed and made it accessible directly to the public network. So we can host our application on private subnet itself.
+      
+But many of the times the software application that is running on the ec2 instance may want to access external resources/services/applications that are on public network for performing the operations like an ecommerce application running on an ec2 instance may want to talk to an payment gateway/banking gateway to process the online orders. In this case we don't need inbound network traffic from public network, but we still need outbound network traffic from the subnet resources to the public network and hence we need Hybrid subnet
+
+      2. elastic beanstalk
+      3. load balancers
+      4. rds instance
+      5. autoscaling group
+
+There are various different types of applications running under different ports/protocol on our resources of VPC network, how to control access to these resources of applications?
+
+How to install apache2 server onto the ec2 instance?
+1. sudo apt update -y
+2. sudo apt install -y apache2
+
+How to install tomcat server?
+1. sudo apt update -y
+2. sudo apt install -y openjdk-17-jdk
+3. download the tomcat server binary under ~/middlware directory
+mkdir ~/middleware
+cd middleware
+wget https://dlcdn.apache.org/tomcat/tomcat-11/v11.0.3/bin/apache-tomcat-11.0.3.tar.gz
+
+4. upon download the zip file we need to extract it
+tar -xzvf apache-tomcat-11.0.3.tar.gz
+rm apache-tomcat-11.0.3.tar.gz
+
+5. goto the tomcat/bin directory to start
+cd apache-tomcat-11.0.3/bin
+./startup.sh
+
+
+NACL (Network access control List)
+----------------------------------
+NACL stands for "network access control list". NACL is an firewall that is setup at the subnet level, so that we can enforce traffic restrictions on the group of resources that are part of the subnet. Since it is an firewall setup at subnet-level we can define the common traffic restrictions that has to be enforced on the group of resources using NACL
+
+Few points about NACL:
+1. The AWS cloud platform creates an default NACL rules for all the subnets of the VPC with default traffic pattern
+Ingress:
+Allow all the public network traffic towards the resources of the subnet
+Egress:
+Allow all the traffic from the subnet of resources to the external network
+
+2. Through the help of NACL we can enforce traffic restrictions based on
+      1. source CIDR
+      2. protocol
+      3. port
+      4. action = allow/deny that traffic for the subnet resources
+
+asking to assign public Ip address to all the resources that are provisioned under this subnet.
+      2. while provisioning the individual resource we need to explicitly enable asking AWS to assign public Ip address
+
+These public Ip addresses are of #2 types
+1. ephemeral public Ip address
+2. elastic public Ip address (eip)
+            
+1. ephemeral public Ip address lives for a short-time (temporary): are by default generated and assigned to the resources by AWS cloud platform. These Ip addresses would be changed upon restart or stop/start of the resources. So it is not advised to use these ephemeral Ip addresses for production usage and these Ip addresses are supported for the sake of usage in lower-environment like dev, test, uat etc. ephemeral Ip addresses are free of usage
+
+2. elastic public Ip address
+For a resource in AWS cloud platform if we want to assign an permanent Ip address then we need to use elastic Ip address. The AWS cloud platform allows each AWS account to have one elastic Ip pool in which we can request and can have at max 5 Ip addresses within that pool.
+      
+These Ip addresses are initially un-assigned, while provisioning the resources we can choose to assign one of the public Ip address that are in un-assigned state from the elastic pool to the resource. So that upon deleting/deprovisioning the resource the Ip address would be returned back to the elastic pool with a status as un-assigned back.
+      
+In this way we never loose the public addresses as those are always reserved and kept under elastic pool. But elastic public Ip address are chargeable.
+
+
