@@ -1,0 +1,260 @@
+AWS Certified Cloud Practitioner [CLF-C02]
+Timings: 8:10 am ist - 9:10 am ist [Monday - Saturday]
+Duration: 4 months
+Fee: 6k [5k for existing sriman sir students]
+Notes: on-weekly basis
+No recording will be provided aspart of the course. students are not allowed to record the sessions, if found the admission will be cancelled without any fee refund
+
+emergency: recorded and will be shared with the student.
+-------------------------------------------------------------------------------------------------------------------------------------
+Target Audience:
+1. programmers
+2. administrators/network engineers/database administrators
+3. quality engineers
+basically any stream of people can learn cloud platform as it is a common necessacity in learning it as everyone goes on cloud
+
+
+The pre-requisite topics will be covered over #2 weekends (saturday/sunday) at 6:00 pm - 7:30 pm for helping the students
+note: at a very high-level, to help in coping-up with course.
+	
+Pre-requisite:
+1. Linux operating system [recommended]
+	1.1 Filesystem management
+	1.2 package management
+	1.3 file permissions
+	1.4 user management (optional)
+2. Networking
+	1. ip addressing
+	2. subnet mask
+3. any programming language (recommended: java)	
+	1. building java program (maven tool)
+	2. deploying the java program on tomcat server
+-------------------------------------------------------------------------------------------------------------------------------------
+Course content:
+
+aws cloud platform offers: 200+ services
+These 200+ services are organized or grouped into different domains based on their type.
+domains = group of related services
+
+The 8 domains are essential to learn inorder to work on aws cloud platform (working experience)
+1. Networking
+2. Compute
+3. Storage
+4. Database
+5. Identity and Access management (security domain)
+6. Developer tools
+7. Messaging
+8. Management Tools
+
+
+From certification:
+1. Introduction
+2. What is cloud computing?
+		1. Different types of cloud computing
+		2. AWS Cloud overview (*)
+		3. Shared Responsibility Model & AWS Acceptable (*)
+3. Elastic Cloud compute (ec2)
+		1. EC2 Basics
+		2. Instance Types
+		3. SSH
+		4. Instance Roles
+		5. Instance Connect
+		6. Shared responsibility model of ec2
+4. ELB (Elastic Loadbalancer) & ASG (Auto-scaling group)
+		1. High availability, scalability and elasticity
+		2. Application Loadbalancer
+		3. Auto-scaling group
+		4. Auto-scaling strategies
+5. EC2 Storage
+	1. EBS overview (Multi-arch, snapshots)
+	2. AMI
+	3. EC2 Image builder
+	4. EC2 Storage
+	5. EFS
+	6. Amazon FSx
+6. Amazon S3
+	1. S3 overview
+	2. Bucket Policy
+	3. Hosting Website on S3
+	4. Versioning
+	5. Replication
+	6. Storage class
+	7. S3 Encryption
+	8. IAM Access
+	9. S3 Snow Family 
+	10. Strage Gateway
+7. Database
+	1. Datbase Introduction
+	2. RDS & Aurora
+	3. RDS Deployment options
+	4. Elastic Cache
+	5. DynamoDB 
+	6. DynamoDB Global Tables
+Theoritical questions (#overview)
+	7. Redshift
+	8. EMR
+	9. Athena
+	10. QuickSight
+	11. DocumentDB
+	12. Neptune
+	13. Timestream
+	14. QLDB
+	15. Managed blockchain
+	16. Glue
+	17. DMS Service
+8. ECS, Lambda, Batch and Lightsail
+	1. Docker (ECS)
+	2. Fargate
+	3. EKS
+	4. Serverless Lambda
+	5. API Gateway
+	6. Batch
+	7. Lightsail
+9. Deployments & Managing Infrastructure at Scale
+	1. Cloud Formation
+	2. Beanstalk
+	3. Codedeploy
+	4. CodeCommit
+	5. CodeBuild
+	6. CodePipeline
+	7. CodeArtifact
+	8. Systems Manager (SSM)
+10. Cloud Integrations
+	1. SQS
+	2. Kinesis
+	3. SNS
+	4. Amazon MQ
+11. Cloud Monitoring
+	1. Cloud Watch
+	2. Cloud Trail
+	3. X-Ray
+	4. CodeGuru
+	5. AWS Health Dashboard
+12. VPC & Networking
+	1. VPC
+	2. Subnet, Internet Gateway, NAT Gateway
+	3. Security groups 
+	4. NACL
+	5. VPC Peering
+	6. VPC Endpoints 
+	7. Private Link
+	8. Direct-connect
+	9. Client VPN
+	10. Transit Gateway
+13. Security & Compliance
+	1. DDoS protection
+	2. WAF & Shield
+	3. Network Firewall
+	4. Firewall manager
+	5. KMS
+	6. AWS Certificate Manager
+	7. Secrets Manager
+	8. GaurdDuty
+	9. Inspector
+	10. Config
+	11. Macie
+	12. Security Hub
+	13. Amazon Detective
+	14. Root User priviliges
+	15. IAM Access
+14. Machine Learning
+	1. Rekognition
+	2. Transcribe
+	3. Polly
+	4. Translate
+	5. Lex
+	6. Comprehend
+	7. SageMaker
+	8. Forecast
+	9. Kendra
+	10. Personalize
+	11. Textract
+15. Account Management, Billing & Support
+	1. Organizations
+	2. Consolidated Billing
+	3. AWS Control Tower
+	4. AWS Resource Access Manager
+	5. Service Catalog
+	6. Pricing models of cloud
+	7. Savings Plan
+	8. Compute Optimizer
+	9. Billing and Costing Tools
+	10. Service Quotas
+	11. Support Plans
+	12. AWS Trusted Advisor
+	13. Cost tags
+	
+
+durgasoftonlinetraining@gmail.com
+tech.sriman@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+

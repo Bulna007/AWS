@@ -1,0 +1,97 @@
+Management Tools
+----------------
+There are 3 major services are there aspart of management tools
+1. aws cloudwatch
+2. aws cloudtrail
+3. trusted advisor
+
+1. AWS Cloudwatch
+AWS Cloudwatch is a monitoring and observability service that helps us in monitoring and tracking the cloud resources and applications in realtime
+
+What CloudWatch does?
+1. Collects Metrics
+Tracks the performance data like cpu usage, memory, disk I/O and many more from aws services and custom application
+
+The AWS Cloudwatch has close integrations with all the AWS Services, during the provisioning of the service we can enable the cloudwatch metrics to capture the usage of the service. Then cloud watch periodically polls the service/resource and gathers the metrics and provides to us. If we want to capture the metrics more often, then we need to upgrade the cloud watch pricing plan
+
+2. Monitors logs:
+Aggregates and analyzes the logs from EC2, Lamdba and other services
+
+3. Set Alarms
+Automatically alerts you when thresholds are breached (eg.. CPU High usage or memory etc)
+
+4. Visualizes Data
+Let us see metrics and logs side by side for quick insights
+
+5. Automates responses
+Triggers actions like scaling or notifications when certain conditions are met
+----------------------------------------------------------------------------------------------------------------------------------
+2. AWS CloudTrail
+Records API activity across AWS Services via Console, CLI, SDKs etc. Captures events like creating an ec2 instance, create an S3 bucket, upload an object into S3, modifying an IAM role etc
+
+It stores logs in Amazon S3 with optional delivery to CloudWatch Logs. Mainly serves the purpose of auditing, compliance and security investigation
+
+---------------------------------------------------------------------------------------------------------------------------------
+3. Trusted Advisor
+Trusted advisor is an aws account level monitoring tool, that monitors the activities and delivers the reports and provide recommendations on the areas where we can improve
+There are 5 parameters of reports:
+1. cost optimization
+2. security
+3. performance
+4. fault tolerance
+5. service limits
+
+For eg..
+CPU usage level of an ec2 instance is very low = Then trusted advisor sends an notification to reduce the shape of the ec2 instance to save cost. (Cost optimization)
+
+Security: if the security group we have created is open to the world, then it sends an notification about the security breach that is there aspart of the security group configuration
+
+Trusted advisor is offered in 4 plans
+1. basic
+2. developer
+3. business
+4. enterprise
+
+For every aws cloud account, the trusted advisor is enabled with "basic" plan. it generates notifications and recommendations based on few parameters only.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

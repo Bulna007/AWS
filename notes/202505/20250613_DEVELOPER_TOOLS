@@ -1,0 +1,195 @@
+AWS Developer Tools
+-------------------
+In the Developer Tools domain all the tools required for implementing an complete devops ci/cd are provided by AWS Cloudplatform. There are 5 services are offered aspart of the developer tools
+
+1. CodeCommit
+CodeCommit is a git repository hosted and managed by the aws cloudplatform
+
+2. CodeBuild
+Using the CodeBuild we can build the project and verify the quality gating checks like codecoverage, static code analysis and unit test executions. Upon successful validation of these we can publish the build artifact into CodeArtifact repository
+
+We can think of a CodeBuild as a Continous integration pipeline
+upon developer merge a PR from the feature branch into master, we want to run through several checks before allowing the merge like
+    1. run the testcases
+    2. verify the code quality checks like sonarqube, jacoco etc
+    4. upon successful validation, produce the artifact of the project
+    5. publish the build artifact into the artifactory repository
+in order to carry the whole process we need infrastructure and platform software to be installed on a machine. instead we can use Codebuild which takes of building and publishing the artifact into CodeArtifact repository
+
+
+3. CodeDeploy
+Through the help of CodeDeploy we can deliver the software application onto the aws cloudplatform Infrastructure
+
+4. CodePipeline
+Through CodePipeline we can execute the Code Deployment to Release the Code
+
+5. CodeArtifact
+CodeArtifact is used for storing the build artifacts and promote it across all the environments
+
+
+There are lot of third-party vendors offers the above set of tools like
+1. For source code management: we have github, bitbucket etc
+2. Continous Integration and Continous delivery we have lot of pipeline tools are available: Jenkins, Concourse, Bamboo etc
+3. Delivering the Code to the Target environment we have Infrastructure and Software Configuration automation tools like: Terraform, Ansible etc
+
+Making all these tools work together and integrate them in releasing the code is quite complex process and ensuring security across them is very difficult. Instead of having these tools implemented from third-parties we can make use of the developer tools domain services that are provided by aws cloudplatform which has better integration with cloud services
+
+1. CodeCommit
+The devops engineers has to choose a version control system out of the available tools in the market like github, bitbucket or gitlab etc. In these tools to manage access permissions in granting the repository access to specific users he has to create
+    1. organizations
+    2. teams
+    3. add members (people) to the teams
+    4. create projects and repositories
+    5. manage permissions to the repositories controlling the access
+    etc
+    
+Each repository we have created for the project should be make as private and restricted members to access it. For eg.. we need to group users into leads and team members and grant access to them. A member can pull, push, clone, commit the code and create a PR. A lead can create repository, review PR, merge etc. None of them should have access to delete the repository
+
+The devops engineer is responsible for configuring, controlling and restricting the access to the repositories that takes long time in setup and integrate with ci/cd tools as well.
+    
+Instead of using the third-party tools, we can make use of AWS CodeCommit. It is a fully-managed Version control service that is integrated with other services of the AWS Cloudplatform. For eg.. To grant the access to the repositories we can create IAM users and bind the policies enabling them access to the code repositories easily.
+    
+There are lot of pre-defined IAM policies are there that can be used for quickly granting the access to the CodeCommit repository for an IAM User
+1. AWSCodeCommitFullAccess
+2. AWSCodeCommitPowerUser
+3. AWSCodeCommitReadonly
+
+How to use the AWS CodeCommit?
+1. Create an IAM user and grant PowerUser policy, so that he can create repositories and manage them
+2. The IAM user apiKey and secret access key cannot be used for accessing the CodeCommit repositories we need to create a seperate CodeCommit credentials for each IAM user that should be used for accessing the CodeCommit Repository
+
+
+2. CodeBuild
+CodeBuild is used for implementing continous integration pipeline. We can build, test and publish the artifacts through the help of CodeBuild
+To build, test and publish the artifact we need
+  1. Infrastructure to run the build
+  2. We need to install the software packages/libraries for eg.. if it is a java project we need to install jdk, maven etc to run the build for the project
+  3. pull the code from the scm repository build, test and publish the artifact onto the artifactory repository by writing the code
+  
+Either we need a dedicated environment to run the builds for the project or we need to automate the process of creating the infrastructure in running the build and destory when it is completed.
+  
+Instead of having these complexities in building and publishing the artifact we can make use of CodeBuild.
+  
+  
+airtelcare2
+|-src
+  |-main
+    |-java
+    |-resources
+    |-webapp
+      |-WEB-INF
+        |-web.xml
+  |-test
+    |-java
+    |-resources
+|-pom.xml
+|-buildspec.yml
+
+There are certain steps to be executed inorder to build and publish the artifact for the above project, the aws cloud engineer has to specify all those steps in a build spec file and provide as input to the CodeBuild asking him to build and publish the artifact by executing it.
+
+buildspec.yml
+---
+version: 0.2
+phases:
+  install:
+    run-as: root
+    on-failure: ABORT
+    commands:
+      - sudo apt update -y
+      - sudo apt install -y openjdk-17-jdk
+      - sudo apt install -y maven
+  build:
+    commands: 
+      - echo "build started on `date`"
+      - mvn test
+  post_build:
+    commands:
+      - mvn package
+  artifacts:
+    files:
+      - target/airtelcare2.war
+    discard-paths: yes
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

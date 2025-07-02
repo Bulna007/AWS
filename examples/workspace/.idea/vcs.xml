@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/SNSPaymentGateway" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SQSConsumerAndProducer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/airtelcare2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/hangout" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/s3lambda" vcs="Git" />
+  </component>
+</project>

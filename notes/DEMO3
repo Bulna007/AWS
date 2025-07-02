@@ -1,0 +1,291 @@
+1. java framework package [15k]
+	1. spring framework with spring boot
+	2. hibernate / jpa api
+	3. restful services
+	4. microservices
+	5. spring webflux / reactive
+	
+2. devops with aws (linux operating system)	
+3. aws cloud practitioner certification training (aws cloudplatform)	
+--------------------------------------------------------------------------------------------------------------------------------------------------
+aws cloud practitioner certification training (aws cloudplatform)		
+Timings: 8:10 am - 9:10 am (Monday - Saturday) | Sunday No Session
+Fee: 6k
+Duration: 4 months
+Notes: live running notes will be provided on weekly basis
+No recordings, no videos will be shared. Students are also not allowed to record the sessions, if found will cancel the admission with no fee refund.
+	
+Pre-requisite:
+1. Linux operating system [recommended]
+	1.1 Filesystem management (cd, ls, mkdir, touch, rm..)
+	1.2 Package management (apt)
+	1.3 File permissions (optional) (chmod, chown)
+	1.4 user management (optional)
+2. Networking (basics) #video recordings (7 days)
+	2.1 ip address
+	2.2 subnet mask
+	2.3 cidr
+	2.4 ssh
+3. any programming language (recommended: java)	
+	- build and package a java application using maven tool
+	- how to deploy the application on tomcat server
+---------------------------------------------------------------------------------------------------------------------------------------------------
+course content
+aws cloudplatform has huge offering of services: 200+ services. these 200+ services are organized or classified into domains, out of them 8 domains are essential to learn and understand to work with aws cloudplatform
+
+1. Networking
+2. Compute
+3. Storage
+4. Database
+5. Identity and access management (security domain)
+6. developer tools
+7. messaging
+8. Management tools
+
+From certification: (70% practical / 30% theoritical)
+1. Introduction
+2. What is cloud computing?
+	1. different types of cloud computing
+	2. AWS Cloudplatform overview
+	3. Shared Responsibility model
+3. Elastic cloud compute (ec2)	
+	1. Ec2 basics
+	2. instance types
+	3. ssh
+	4. Instance roles
+	5. Instance connect
+	6. Shared responsibility model of ec2 instance
+4. ELB (elastic loadbalancer)	 & ASG (auto-scaling group)
+	1. High availability, scalability and elasticity
+	2. Application Loadbalancer
+	3. Auto-scaling group
+	4. Auto-scaling strategies
+5. Ec2 storage
+	1. EBS
+	2. AMI
+	3. EC2 Image builder
+	4. EC2 Storage
+	5. EFS
+	6. Amazon FSx
+6. Amazon S3
+	1. S3 overview
+	2. Bucket policies
+	3. Versioning
+	4. Replication
+	5. Storage class
+	6. S3 snow family
+7. Database
+	1. Database Introduction
+	2. RDS & Aurora
+	3. RDS Deployment options
+	4. Elastic Cache
+	5. DynamoDB
+	6. DynamoDB global Tables
+Theoritical questions 
+	7. Redshift
+	8. EMR
+	9. Athena
+	10. QuickSight
+	11. DocumentDB
+	12. Neptune
+	13. Timestream
+	14. QLDB
+	15. Managed Blockchain
+	16. Glue
+	17. DMS Service
+8. ECS, Lambda, Batch and Lightsail
+	1. Docker
+	2. Fargate
+	3. EKS
+	4. Serverless Lambda
+	5. API Gateway
+	6. Lightsail
+9. Deployments & Managing infrastructure at scale
+	1. Cloud formation
+	2. beanstalk
+	3. codedeploy
+	4. codecommit
+	5. codebuild
+	6. codepipeline
+	7. codeartifact
+	8. systems engineer (SSM)
+10 Cloud Integrations
+	1. SQS
+	2. Kenesis
+	3. SNS
+	4. Amazon MQ
+11. Cloud monitoring
+	1. Cloud watch
+	2. Cloud Trail
+	3. X-Ray
+	4. CodeGuru
+	5. AWS Health dashboard
+12. VPC & Networking
+	1. VPC
+	2. Subnet, Internet Gateway, NAT Gateway
+	3. Security Groups
+	4. NACL Rules
+	5. VPC Peering
+	6. VPC Endpoints
+	7. Direct-connect
+	8. private link
+	9. Client vpn
+	10. Transit gateway
+13. Security & Compliance
+	1. DDOS protections
+	2. waf & shield
+	3. network firewall
+	4. kms
+	5. aws certificate manager
+	6. gaurdduty
+	7. secrets manager
+	8. inspector
+	9. config
+	11. macie
+	12. security hub
+	13. amazon detective
+	14. root user priviliges
+	15. IAM Access
+14. Machine learning
+	1. Rekognition
+	2. Transcribe
+	3. Polly
+	4. Translate
+	5. Lex
+	6. Comprehend
+	7. Sagemaker
+	8. Forecast
+	9. Kendra
+	10 Personalize
+	11. Textract
+15. Account Management , Billing & support
+	1. organizations
+	2. consolidated billing
+	3. aws control tower
+	3. aws resource access manager
+	4. service catalog
+	5. pricing models of cloud
+	6. savings plans
+	7. compute optimizers
+	8. Billing and cost tools
+	9. support plans
+	10. trusted advisor
+	11. cost tags
+---------------------------------------------------------------------------------------------------------------------------------------------------
+add-on batch
+15 days 
+
+1. introduction to cloud platform
+2. ip addressing/ subetmask and cidr (#videos)
+3. aws platform architecture (overview) #weekend (1 day)
+		
+		
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

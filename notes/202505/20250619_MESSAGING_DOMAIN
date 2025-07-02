@@ -1,0 +1,65 @@
+Messaging domain
+----------------
+The Messaging related services are provided aspart of the messaging domain. There are 3 services are offered aspart of the messaging domain
+1. SNS (Simple Notification Service)
+2. SQS (Simple Queuing Service)
+3. SES (Simple Email Service)
+    
+SNS & SQS
+----------
+SNS stands for simple notification service, it is an topic that works based on publisher/subscriber model
+SQS stands for simple queuing service, it is a queue data structure that works based on sender/receiver (point-to-point) model
+
+
+1. SNS
+SNS stands for Simple Notification Service which is pub/sub model of exchanging the messages between the system. It is a Topic datastructure. Whenever a message has been published to a Topic, it would be delivered to all the subsribers who has subscribed for that topic
+
+Amazon SNS is a fully managed pub/sub messaging and event-driven computing service. Instead of we installing, configuring and managing the message queue systems on on-premise environment we can use Amazon SNS
+
+2. SQS 
+SQS stands for simple queuing service, its a fully managed messaging queue system that is provided by AWS Cloudplatform. using SQS developers can build microservices, distributed applications and serverless applications
+
+Advantages:
+1. no need to setup the infrastructure and configuring message server systems
+2. highly available and scalable
+3. reliable delivery of large volumes of data with higher throughput
+4. securely exchange the senstive data through encryption
+5. monitoring, managing the queue software will be taken care by aws cloudplatform
+
+---------------------------------------------------------------------------------------------------------------------------------
+3. SES
+SES stands for simple email service, it is an relay managed email server service provided by the aws cloud platform, through which we can deliver bulk, promotional and marketing and transaction emails to the customers.
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

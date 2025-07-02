@@ -1,0 +1,88 @@
+AWS Certified Cloud practitioner [CLF-C02]
+------------------------------------------
+Timings: 8:10 am IST - 9:10 am IST [Monday - Saturday] [Sunday - No session]
+Duration: 4 Months
+Fee: 6k, [existing sriman sir students: 5k]
+Live classroom notes will be captured and provided on weekly basis to the students
+No recordings, no youtube, no video uploads = students are not permitted to record the sessions, if we found anyone recording the classes, the admission will be suspended immediately without any fee refund.
+	
+The classes to be highly interactive. randomly the students are moved into waiting room, to check their participation and expected them to rejoin.
+	
+emergency: if you place a message telegram group, for that student only the class will be recorded and the video will be shared to him only for 1 week
+-------------------------------------------------------------------------------------------------------------------------------------
+Pre-requisite
+1. no programming language knowledge is required (java/python)
+2. target audience
+	1. programmers (java, python, .net, php etc)
+	2. administrators, network engineers
+	3. qa engineers
+
+
+#2 weekends (saturday/sunday) : 6:00 pm - 7:30 pm (will be covered)
+--------------------------------------------------------------------
+1. Basics of Linux operating system (nice to have linux knowledge)
+	1.1 Filesystem (create file/dir, copy, move, remove, seeing etc)
+	1.2 grep, find
+	1.3 File permission: chown, chmod
+	
+	1.4 Package Management (apt)
+2. Basic Networking
+	1. ip addressing
+	2. subnet mask
+	3. class-full/class-less ip addressing
+3. any programming language: preferrably java
+	1. compile the program using build tool: maven/gradle
+	2. deploying on tomcat server
+4. database (rdbms)	
+5. ssh protocol
+-------------------------------------------------------------------------------------------------------------------------------------
+
+aws cloud offers : 200+ services
+related services are grouped together and called as "domains".
+#8 domains are required to work with aws cloud platform
+1. networking domain
+2. compute
+3. storage
+4. database
+5. identity and access management domain (security domain)
+6. developer tools
+7. messaging
+8. management tools
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+																	 

@@ -1,0 +1,105 @@
+Route53
+--------
+Amazon Route53 is an Domain Name System (DNS) web service that is an DNS Server that resolves the domain name to an ip address of a resource on which our application is hosted.
+    
+There are many advantages of using Route53 when compared with public dns server offered by hosting provider.
+    
+features:
+1. higly available and scalable
+2. fully complaint with ipv6 based routing
+3. cost effective based routing, only the dns queries that are resolved through Route53 will be charged. There is no fixed charge on usage of service (pay-as-you-go)
+4. We can buy domain names through Route53 domain registration feature
+5. Route53 is capable of resolving domain name to aws resources like ec2, lbr, s3, cloudfront by using private dns name of the resource, so we dont have to have public ip address to resolve the domain name
+6. There are different routing policies are supported by Route53, based on which we can route the domain name to resource
+7. Healthchecks and health monitoring of the available resources is supported by Route53
+8. Route53 is secured through IAM access
+
+What are the different routing policies are supported by Route53 Service?
+There are 7 routing policies are supported by Route53
+1. Simple Routing Policy = The domain name will be mapped to a single resource
+2. Failover Routing Policy = When we want to configure active/passive failover we can use this policy. If the primary node on which our application is running has been dead, then Route53 can route the traffic to the secondary 
+3. GeoLocation Routing policy = Routes the request to the server or node nearest to the customer
+4. Latency Routing policy = The resources are hosted on multiple aws regions, we want to route the traffic based on region that provides low-latency and less round-trip time
+5. Weighted Routing Policy = If we want to distribute the traffic across the nodes based on proportion or weight for eg.. 60% of the request/traffic to node1 and 40% to the node2
+6. MultiValue answer Routing Policy = We can configure upto 8 records for a domain name, so that for each request Route53 randomly returns a response
+7. GeoProximity Routing Policy = GeoLocation and GeoProximity serve different purpose and offer different features. 
+    1. Location of both User and AWS Resource
+    2. Supported Lat/Long coordinates
+    3. We can apply bias to expand or shrink the traffic regions
+    
+git: https://github.com/techsriman/hangout.git
+
+apache2 reverse proxy configuration:
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+
+<VirtualHost *:80>
+  ServerName www.enablersapp.com
+
+  ProxyPreserveHost on
+  ProxyPass / http://127.0.0.1:8081/
+  ProxyPassReverse / http://127.0.0.1:8081/
+
+</VirtualHost>
+<VirtualHost *:80>
+  ServerName enablersapp.com
+
+  ProxyPreserveHost on
+  ProxyPass / http://127.0.0.1:8081/
+  ProxyPassReverse / http://127.0.0.1:8081/
+
+</VirtualHost>
+
+sudo a2ensite hangout
+sudo systemctl daemon-reload
+sudo systemctl restart apache2
+
+
+For ubuntu service:
+hangout.service
+[Unit]
+Description=Hangout application
+After=network.target
+
+[Service]
+User=ubuntu
+ExecStart=/usr/bin/java -jar /opt/hangout/hangout-1.0.jar
+SuccessExitStatus=0
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl enable hangout
+sudo systemctl restart hangout
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
