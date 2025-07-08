@@ -1,0 +1,353 @@
+#1.
+Redshift = petabytes scaled data warehouse and analytics service
+1. large-scale data analysis
+2. sql-based querying and integrates with services like S3 and QuickSight
+3. Optimized for business inteligence and reporting workloads
+
+
+#2. EMR
+EMR = is a big data processing service (Apache Spark, Haddop, Hive)
+1. large-scaled data analysis, machine learning and ETL (Extract, Transform and Load) workflows
+
+#3 Athena
+Athena is a serverless query service lets you analyze the data directly in Amazon S3 using SQL
+1. adhoc querying, data exploration and business intelligence
+
+#4 Quick Sight
+Quick Sight = is a cloud-native business intelligence (BI) service for creating interactive dashboards and visualize the data
+1. ideal for data-driven decision-making, reporting and adhoc analysis
+2. Natual language queries
+
+#5. DocumentDB
+Its an fully managed NoSQL Document database suports MongoDB workloads, semi-structured data like JSON documents
+
+#6. Neptune
+Fully managed graph database service  designed for applications that need to store and query relationships like social network, recommendations engines and fraud detection
+
+#7. QLDB (Quantum ledger database)
+Fully managed ledger database that provides a transparent immutable, and cryptographical verifiable transaction log. 
+    
+#8. Glue
+Glue is fully managed EL (Extract, Transform and Load) service that helps prepare and move data for analytics
+1. ideal for data integrations, cleansing and cataloging across sources like S2, RDS and Redshift
+
+#9. DMS (AWS Database Migration Service)
+DMS helps you migrate datbaases to AWS quickly and securely with minimal downtime.
+    
+10. API Gateway
+developers to create, publish and manage RESTful, HTTP and WebSocket API at any scale
+
+11. AWS Batch
+fully managed service that enables us to run Batch computing workloads efficiently on AWSL
+1. scientific simulations, image and video processing, data transformations and machine learning model training
+
+
+12. Lightsail
+Lightsail is a simplified virtual private server (VPS) service designed for users who want an easy way to launch and manage cloud resources.
+    
+13. SSM (AWS Systems Manager)
+is a centralized management service that helps you monitor, automate and maintain aws resources
+EC2 instances, applying patches, running commands remotely and collecting inventory data
+
+14. Kinesis
+Kinesis is a real-time data streaming service that lets you collect, process and analyze data as it flows. used for real-time analytics dashboard, log and event data processing, machine learning pipelines and audio and video streaming
+
+15. Amazon MQ
+Amazon MQ is an managed message broken service for apache Active MQ and RabbitMQ it helps applications communiate by sending messages between the components.
+    
+16. Cloud Watch
+Monitoring and observability service. [collects and track metrics, monitor log, alarms, visualize]
+
+17. Cloud Trail
+CloudTrail is a logging service tat records API calls and user activities
+
+18. AWS X-Ray
+it is a distributed tracking tool that helps developers and cloud practitioners analyze and debug applications especially built-on microservices architecture.
+    
+19. AWS CodeGuru
+developer tool powered by machine learning
+CodeGuru Reviewer = reviews code for bugs, security and vulnerabilities and best practices
+CodeGuru profiler = helps identify performance bottlenecks in live application and suggests optimizations
+
+20. AWS Health Dashboard
+Its a personalized view of the health of aws services that affect your specific aws account.
+    
+21. Transit Gateway
+Transit Gateway acts like a central hub that connects multiple amazon vpcs and on-premise networks through the single gateway
+
+Security and Compliance
+-------------------------
+22. DDoS protection (Distributed Denial of Service)
+Attacks flood systems with traffic to make them unavailable. AWS offers managed services to protect against these threats
+1. AWS Shield Standard = automatically included at no extra cost for all csustomers. It defects against common network and transport layer attacks like SYN floods and UDP reflections
+
+2. AWS Shield Advanced = premium service offering and enhanced protection, real-time attach visibility and access to the AWS DDoS response Team (DRT). It also integrates with AWS WAF for fine-grained traffic filtering
+
+23. WAF (Web Application Firewall)= AWS security and compliance offerings. Helps web applications from common web exploits and malicious traffic. it works by letting you define rules that filter http and https requests based on conditions like
+    1. ip address
+    2. query string parameters
+    3. geolocations
+    4. size of the request
+    5. SQL Injection or Cross-site scripting patterns
+    
+24. AWS Network Firewall
+it is designed to protect AWS VPCs like
+    1. stateful filtering and stateless traffic filtering
+    2. Deep packet inspection
+    3. Domain and IP based filtering
+    etc
+    
+25. Firewall manager
+is a centralized security management service that helps us in
+    1. deploy and manage firewall rules across multiple accounts and resources
+    2. enforce security policies consistently across the organizations
+    3. Integrates with services like AWS WAF, AWS Shield Advanced and AWS Network Firewall
+    
+26. KMS = Key Management Service (Encryption)
+    
+27. AWS Certificate Management = SSL/TLS certificates for the AWS Based websites and applications.
+    
+28. Secrets Manager= helps us securely store, manage and retrieve sensitive information like
+  1. database credentials
+  2. API Keys
+  3. OAuth tokens
+  4. other secrets used by the applications and services
+  
+29. AWS Gaurd Duty = it is a threat detection service that continously monitors your aws environment for malicious activity and unauthorized behavior. 
+  1. compromized credentials
+  2. unusual API calls
+  etc
+  
+30. AWS Inspector = it is automated volunerability management service that helps improve security of AWS workloads. continously scans for
+  1. software vulnerabilities
+  2. network exposure risks
+  3. unintended access paths
+  4. security bestpractice violations
+  
+31. AWS Config
+configuration tracking and compliance auditing service. Tracks the resource configurations over the time and detects unauthorized changes.
+  
+32. Macie  
+data security and privacy service that uses machine learning to automatically discover, classify and protect sensitive data stored in AWS especially in S3 bucket.
+    1. Personallly identifiable information
+    2. Credentials and secrets
+    3. Financial data
+    4. Health records
+    
+33. Security Hub
+Centrailized security and compliance dashboard that aggregates multiple findings from aws services and third-party tools
+integrates: GuardDuty, inspector, Macie and Firewall manager
+
+34. Amazon Detective
+helps us investigate and analyze suspicious analysis, it automatically collects and correlates data from sources like
+  1. AWS CloudTrail logs
+  2. VPC Flow logs
+  3. GaurdDuty Findings
+  
+Machine learning
+-----------------
+35. Rekognition
+Amazon Rekognition is a computer vision service that uses deep learning to analyze images and videos and it can
+  1. detect and label objects, scenes and activities
+  2. recognize faces and compares them across images
+  3. Identify inappropriate content
+  4. extract text from images
+  5. analyze facial attributes like emotions or age range
+  
+36. Transcribe
+Fully managed automatic speed recognition service that converts spoken language into written text. designed for usecases like
+  1. Transcribing customer service calls
+  2. generating subtitles for videos
+  3. enhancing accessibility features
+  4. voice-driven applications and analytics
+  
+37. Polly
+Text to speech service that uses deep learning to convert written text into infolike speech
+
+38.Translate
+automatically converts text from one language to another
+
+39. Lex
+build for conversational interfaces using voice and text. it powers chatbots and voice assistants. 
+  1. Automatic Speech recognization (ASR) = to covert speech to text
+  2. Natural Language understanding (NLU) = to interpret user intent
+Lex is the technology behind Amazon Alexa
+
+40. Comprehend
+Natural Language processing service (NLP) that uses machine learning to extract insights from text
+1. detect sentiments (positive, negative , neutral and mixed)
+2. Identify key phrases , entities and language
+3. classify documents by topic
+
+41. SageMaker 
+helps develpers and data scientists build, train and deploy machine learning models at scale. 
+  1. data preparation tools
+  2. model training and tunning
+  3. deployment and monitoring
+  
+42. Forecast
+predicts future outcome based on historical data
+  1. demand forecasting
+  2. financial planning
+  3. resource optimization
+  
+43. Kendra = intelligent enterprise search service powered by machine learning enables organizations to 
+  1. search structured and unstructured data (pds, websites, sharepoints, databases)
+  2. use natural language queries to get highly relevant answers
+  
+44. Personalize  
+real-time recommendation engine powered by machine learning. 
+  1. product recommendations
+  2. personlized search results
+  3. targeted marketing content
+  
+45. Textract  
+document analysis service extract text from handwriting, data from scanned documents.
+  
+Account Management, billing and support
+----------------------------------------
+1. organizations
+centralize, manage and govern multiple aws accounts. it helps for businesses that operates in multi-account environments.
+  
+2. Consolidated billing  
+Feature of AWS organizations. combines biling of multiple aws accounts under a single organization to simplify billing and optimize costs.
+  1. Receive one bill for all accounts 
+  2. share volume discounts and savings plans across accounts
+  3. track individual account usage
+  
+3. AWS Control Tower
+helps organizations setup and govern a secure multi-account aws environment based on best practices
+
+4. Service Catalog
+organizations create, manage and distribute approved IT services called products to users in a controlled and standardized way.
+    1. EC2 instances
+    2. S3 buckets
+    3. Multi-tier applications
+    4. databases
+    
+5. Compute optimizer    
+recommends optimal configurations to improve performance and reduce the costs. It works with
+  1. ec2 instances
+  2. auto-scaling groups
+  3. ebs volumes
+  4. lambda functions
+  
+6. Cost Tags
+Cost tags help you organize and track aws costs by assigning metadata to resources like
+  1. project
+  2. department
+  3. environment
+  4. owner of a team
+  
+derives the billing and cost based on the tags
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
